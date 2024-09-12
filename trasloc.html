@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Knightways Website</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Knightways</h1>
+    </header>
+
+    <main>
+        <!-- Embedded Transloc Website in an iframe -->
+        <iframe src="https://ucf.transloc.com/routes" id="embedded-website" frameborder="0"></iframe>
+    </main>
+
+    <!-- Bottom navigation bar -->
+    <div class="bottom-nav">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="chat.html" class="nav-item">Chat</a>
+        <a href="transloc.html" class="nav-item">Transloc</a> <!-- You can keep this linking to the current page -->
+        <a href="tips.html" class="nav-item">Tips</a>
+        <a href="settings.html" class="nav-item">Settings</a>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="caption"></div>
+    </div>
+
+</body>
+
+</html>
