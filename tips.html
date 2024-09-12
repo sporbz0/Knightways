@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tips | Knightways</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Campus Tips and Tricks</h1>
+    </header>
+
+    <!-- Form for Adding Tips -->
+    <section class="add-tip-form">
+        <h2>Have a Tip? Add It Below!</h2>
+        <form id="tipForm">
+            <label for="tipText">Your Tip:</label>
+            <textarea id="tipText" placeholder="Enter your tip here..." required></textarea>
+
+            <label for="tipCategory">Category:</label>
+            <select id="tipCategory" required>
+                <option value="general">General</option>
+                <option value="transportation">Transportation</option>
+                <option value="study">Study</option>
+            </select>
+
+            <button type="submit">Add Tip</button>
+        </form>
+    </section>
+
+    <!-- Main Content Section -->
+    <main class="tips-content">
+        <section class="general-tips">
+            <h2>General Tips for Navigating Campus</h2>
+            <ul id="generalTipsList">
+                <li>Use the UCF shuttle system to get around campus faster during peak hours.</li>
+                <li>Check building numbers ahead of time to avoid getting lost.</li>
+                <li>Use the Knightways interactive map to find buildings and rooms with ease.</li>
+                <li>Take advantage of on-campus dining options during breaks between classes.</li>
+            </ul>
+        </section>
+
+        <section class="transportation-tips">
+            <h2>Transportation Tips</h2>
+            <ul id="transportationTipsList">
+                <li>Download the UCF Transloc app for real-time shuttle tracking.</li>
+                <li>Use the bike racks located at all major buildings for easy transport.</li>
+                <li>Parking garages tend to fill up quickly, so arrive early to secure a spot.</li>
+            </ul>
+        </section>
+
+        <section class="study-tips">
+            <h2>Study and Campus Resources</h2>
+            <ul id="studyTipsList">
+                <li>The John C. Hitt Library is the best place for quiet study sessions.</li>
+                <li>Reserve study rooms ahead of time during exam periods to ensure a spot.</li>
+                <li>Take advantage of campus tutoring services for extra academic support.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+    </footer>
+
+    <!-- Bottom navigation bar -->
+    <div class="bottom-nav">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="chat.html" class="nav-item">Chat</a>
+        <a href="transloc.html" class="nav-item">Transloc</a>
+        <a href="tips.html" class="nav-item">Tips</a>
+        <a href="settings.html" class="nav-item">Settings</a>
+    </div>
+
+    <script src="js/tips.js"></script>
+
+</body>
+</html>

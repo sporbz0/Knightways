@@ -60,15 +60,21 @@ function initMap() {
     });
 
     // Add custom markers for buildings
-    addBuildingMarker(map, { lat: 28.60045899087345, lng: -81.20140021614196 }, "UCF Library", "images/studentUnionMap.png");
+    addBuildingMarker(map, { lat: 28.601978432864776, lng: -81.2003125998634 }, "UCF Student Union", "images/studentUnionMap.png", "images/MapIcon.png"); 
 }
 
 // Function to add a clickable marker for buildings with floor plans and a custom icon
-function addBuildingMarker(map, position, buildingName, floorPlanUrl) {
+function addBuildingMarker(map, position, buildingName, floorPlanUrl, customIcon) {
     var marker = new google.maps.Marker({
         position: position,
         map: map,
-        title: buildingName
+        title: buildingName,
+        icon: {
+            url: customIcon,        // Custom icon URL
+            scaledSize: new google.maps.Size(18, 18),  // Scale the icon to 18x18 pixels
+            origin: new google.maps.Point(0, 0),       // Origin of the image (top-left corner)
+            anchor: new google.maps.Point(16, 32)      // Anchor point (bottom center of the icon)
+        }
     });
 
     // Add click event to open the modal with the floor plan
@@ -76,6 +82,7 @@ function addBuildingMarker(map, position, buildingName, floorPlanUrl) {
         openModal(floorPlanUrl, buildingName);
     });
 }
+
 
 // Function to open the modal and display the floor plan
 function openModal(imageUrl, captionText) {

@@ -17,9 +17,18 @@ header {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
 
-/* Optional gradient background */
+/*gradient background */
 header {
     background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+.h2 {
+    margin: 0;
+}
+.map-text {
+    text-align: left;
+    font-size: 1.5em; /* Increase font size */
+    color: #333;      /* Darker text color */
 }
 nav {
     text-align: center;
@@ -32,7 +41,7 @@ nav a {
     font-weight: bold;
 }
 main {
-    padding: 20px;
+    
     text-align: center;
 }
 footer {
@@ -47,7 +56,7 @@ footer {
 
 /* Hero Section */
 .hero {
-    background-image: url('../images/HomePageBackground.jpg'); /* Path to your background image */
+    background-image: url('../images/HomePageBackground.jpg'); /* Path to background image */
     background-size: cover;       /* Ensure the image covers the entire section */
     background-position: center;  /* Center the background image */
     background-repeat: no-repeat; /* Prevent repeating if the image is smaller than the section */
@@ -57,7 +66,7 @@ footer {
     position: relative;           /* Ensure position stacking */
 }
 
-/* Optional overlay to darken the image for better text readability */
+/*overlay to darken the image for better text readability */
 .hero::before {
     content: '';
     position: absolute;
@@ -124,13 +133,32 @@ footer {
     max-width: 1200px;  /* Optional: Max width for larger screens */
 }
 
-/* Specific styling for the Google Maps section */
-
-/* Ensure the map container takes up the full width and a reasonable height */
+/*styling for the Google Maps section */
 #map {
-    height: 80vh;  /* Set height to 80% of the viewport height */
-    width: 100vw;  /* Set width to 100% of the viewport width */
-    margin-bottom: 20px;
+    height: 90vh;  /* Set height to 70% of the viewport height */
+    width: auto;  /* Set width to 100% of the viewport width */
+    margin: 0;
+    padding: 50px;
+    box-sizing: border-box;
+    border: #0056b3;
+    
+}
+
+@media (max-width: 768px) {
+    #map {
+        width: 100%;
+        height: 100vh;   /* Ensure map height fills the viewport minus bottom nav */
+        margin-bottom: 40px;
+    }
+
+    .controls {
+        position: relative;
+        margin-top: 10px;
+        display: block;
+        width: calc(100% - 40px);    /* Adjust width of search bar */
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 /* Style the search box */
@@ -153,6 +181,7 @@ body, html {
     height: 100%;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 #pac-input {
@@ -164,8 +193,7 @@ body, html {
 /* Weather Widget Container */
 .weather-container {
     background-color: #1e1e1e; /* Dark background for contrast */
-    padding: 20px;
-    margin: 20px 0;
+    margin-bottom: 20px;
     color: white;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
@@ -191,7 +219,7 @@ body, html {
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 10; /* Sit on top */
+    z-index: 999; /* Sit on top */
     padding-top: 60px; /* Padding from the top */
     left: 0;
     top: 0;
@@ -226,6 +254,7 @@ body, html {
     font-size: 40px;
     font-weight: bold;
     cursor: pointer;
+    z-index: 999;
 }
 
 /* Ensure the iframe fills the available space */
@@ -234,4 +263,151 @@ body, html {
     height: calc(100vh - 60px); /* Full height minus the space for the bottom nav */
     border: none;
     display: block;
+}
+
+/* Adjust iframe content for mobile view */
+@media (max-width: 768px) {
+    #embedded-website {
+        transform: scale(1.0);       /* Scale the content down */
+           /* Scale from the top-left corner */
+        width: 100%;               /* Increase width to balance the scaling */
+        height: calc(100vh - 60px);   /* Ensure iframe height fills the viewport minus bottom nav */
+        overflow: hidden;
+    }
+}
+
+/* tips page */
+/* General Tips Section */
+.general-tips {
+    background-color: #f9f9f9; /* Light background color */
+    border-left: 4px solid #007bff; /* Blue border to highlight the section */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px; /* Rounded corners */
+}
+
+.general-tips h2 {
+    color: #007bff; /* Blue heading color */
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.general-tips ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.general-tips ul li {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: #333;
+}
+
+/* Transportation Tips Section */
+.transportation-tips {
+    background-color: #e8f4e5; /* Light green background */
+    border-left: 4px solid #28a745; /* Green border to represent transport */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.transportation-tips h2 {
+    color: #28a745; /* Green heading color */
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.transportation-tips ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.transportation-tips ul li {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: #333;
+}
+
+/* Study Tips Section */
+.study-tips {
+    background-color: #f2f2f9; /* Light purple background */
+    border-left: 4px solid #6f42c1; /* Purple border for study-related content */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.study-tips h2 {
+    color: #6f42c1; /* Purple heading color */
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.study-tips ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.study-tips ul li {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: #333;
+}
+
+/* tips form */
+
+/* Form Section Styling */
+.add-tip-form {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.add-tip-form h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.add-tip-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-tip-form label {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.add-tip-form textarea {
+    padding: 10px;
+    font-size: 1em;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.add-tip-form select {
+    padding: 10px;
+    font-size: 1em;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.add-tip-form button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-tip-form button:hover {
+    background-color: #0056b3;
 }

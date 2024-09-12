@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chat | Knightways</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Knightways Chat</h1>
+    </header>
+
+    <!-- Chat Section -->
+    <main class="chat-container">
+    <!-- Sign-up / Sign-in Section -->
+    <section id="auth-section">
+        <h2>Create an Account or Sign In</h2>
+        <div id="signup-form">
+            <input type="email" id="signup-email" placeholder="Enter email" required>
+            <input type="password" id="signup-password" placeholder="Enter password" required>
+            <button id="signup-btn">Sign Up</button>
+        </div>
+        <div id="login-form">
+            <input type="email" id="login-email" placeholder="Enter email" required>
+            <input type="password" id="login-password" placeholder="Enter password" required>
+            <button id="login-btn">Sign In</button>
+        </div>
+        <div id="user-info" style="display:none;">
+            <p id="user-email"></p>
+            <button id="logout-btn">Logout</button>
+        </div>
+    </section>
+
+    <!-- Chat and Forum Section (Only visible when user is signed in) -->
+    <section id="chat-section" style="display:none;">
+        <h2>Chat Room</h2>
+
+        <!-- Forum Threads -->
+        <div id="forum-threads">
+            <h3>Create a new thread</h3>
+            <input type="text" id="thread-name" placeholder="Thread name" required>
+            <button id="create-thread-btn">Create Thread</button>
+
+            <h3>Available Threads</h3>
+            <ul id="threads-list"></ul>
+        </div>
+
+        <!-- Chat box -->
+        <div id="chat-box"></div>
+
+        <!-- Chat form -->
+        <form id="chatForm" style="display:none;">
+            <input type="text" id="message" placeholder="Type a message..." required>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+    </main>
+
+    <!-- Bottom navigation bar -->
+    <div class="bottom-nav">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="chat.html" class="nav-item">Chat</a>
+        <a href="transloc.html" class="nav-item">Transloc</a>
+        <a href="tips.html" class="nav-item">Tips</a>
+        <a href="settings.html" class="nav-item">Settings</a>
+    </div>
+
+    <!-- Include Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+
+    <!-- Include custom chat script -->
+    <script src="js/chat.js"></script>
+</body>
+</html>
