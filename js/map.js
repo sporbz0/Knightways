@@ -1,62 +1,72 @@
+// js/map.js
+
+let map;
+
 function initMap() {
-    // Initialize the map centered at UCF
-    var map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 28.601927982431244, lng: -81.20067608488577 }, // UCF Coordinates
+    // Default location (e.g., University of Central Florida)
+    const defaultLocation = { lat: 28.601927982431244, lng: -81.20067608488577 };
+
+    // Initialize the map
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: defaultLocation,
         zoom: 17
     });
 
-    // Create the search box and link it to the UI element.
-    var input = document.getElementById('pac-input');
-    var searchBox = new google.maps.places.SearchBox(input);
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+    // Add a marker at the default location
+    const marker = new google.maps.Marker({
+        position: defaultLocation,
+        map: map,
+        title: 'University of Central Florida'
+    });
 
-    // Bias the search results towards current map's viewport.
-    map.addListener('bounds_changed', function () {
+    // Initialize the search box
+    const input = document.getElementById('pac-input');
+    const searchBox = new google.maps.places.SearchBox(input);
+
+    // Bias the SearchBox results towards current map's viewport.
+    map.addListener('bounds_changed', () => {
         searchBox.setBounds(map.getBounds());
     });
 
-    var markers = [];
+    let markers = [];
 
-    // Event fired when the user selects a place from the search box.
-    searchBox.addListener('places_changed', function () {
-        var places = searchBox.getPlaces();
+    // Listen for the event fired when the user selects a prediction and retrieve
+    // more details for that place.
+    searchBox.addListener('places_changed', () => {
+        const places = searchBox.getPlaces();
 
-        if (places.length == 0) {
+        if (places.length === 0) {
             return;
         }
 
         // Clear out the old markers.
-        markers.forEach(function (marker) {
-            marker.setMap(null);
-        });
+        markers.forEach(marker => marker.setMap(null));
         markers = [];
 
-        // Get the details for each selected place.
-        places.forEach(function (place) {
+        // For each place, get the icon, name and location.
+        const bounds = new google.maps.LatLngBounds();
+        places.forEach(place => {
             if (!place.geometry) {
                 console.log("Returned place contains no geometry");
                 return;
             }
 
-            var bounds = new google.maps.LatLngBounds();
-
             // Create a marker for each place.
-            var marker = new google.maps.Marker({
+            const newMarker = new google.maps.Marker({
                 map: map,
                 title: place.name,
                 position: place.geometry.location
             });
+            markers.push(newMarker);
 
-            markers.push(marker);
-
-            // If the place has a geometry, then present it on the map.
             if (place.geometry.viewport) {
+                // Only geocodes have viewport.
                 bounds.union(place.geometry.viewport);
             } else {
                 bounds.extend(place.geometry.location);
             }
-            map.fitBounds(bounds);
         });
+        map.fitBounds(bounds);
     });
 
     // Add custom markers for buildings

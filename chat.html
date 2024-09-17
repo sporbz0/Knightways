@@ -1,78 +1,84 @@
+<!-- chat.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Chat | Knightways</title>
+    <!-- ... existing head content ... -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-
     <header>
         <h1>Knightways Chat</h1>
     </header>
 
-    <!-- Chat Section -->
     <main class="chat-container">
-    <!-- Sign-up / Sign-in Section -->
-    <section id="auth-section">
-        <h2>Create an Account or Sign In</h2>
-        <div id="signup-form">
-            <input type="email" id="signup-email" placeholder="Enter email" required>
-            <input type="password" id="signup-password" placeholder="Enter password" required>
-            <button id="signup-btn">Sign Up</button>
-        </div>
-        <div id="login-form">
-            <input type="email" id="login-email" placeholder="Enter email" required>
-            <input type="password" id="login-password" placeholder="Enter password" required>
-            <button id="login-btn">Sign In</button>
-        </div>
-        <div id="user-info" style="display:none;">
-            <p id="user-email"></p>
-            <button id="logout-btn">Logout</button>
-        </div>
-    </section>
+        <!-- Channels Sidebar -->
+        <aside class="channels-sidebar">
+            <div class="channels-header">
+                <h2>Channels</h2>
+                <button id="create-channel-btn" class="create-channel-button">+</button>
+            </div>
+            <ul id="channels-list" class="channels-list">
+                <!-- Dynamically populated channels -->
+            </ul>
+        </aside>
 
-    <!-- Chat and Forum Section (Only visible when user is signed in) -->
-    <section id="chat-section" style="display:none;">
-        <h2>Chat Room</h2>
+        <!-- Chat Area -->
+        <section class="chat-area">
+            <!-- Chat Header -->
+            <div class="chat-header">
+                <h2 id="current-channel-name">Select a Channel</h2>
+            </div>
 
-        <!-- Forum Threads -->
-        <div id="forum-threads">
-            <h3>Create a new thread</h3>
-            <input type="text" id="thread-name" placeholder="Thread name" required>
-            <button id="create-thread-btn">Create Thread</button>
+            <!-- Chat Messages -->
+            <div id="chat-box" class="chat-box">
+                <!-- Messages will be dynamically loaded here -->
+            </div>
 
-            <h3>Available Threads</h3>
-            <ul id="threads-list"></ul>
-        </div>
-
-        <!-- Chat box -->
-        <div id="chat-box"></div>
-
-        <!-- Chat form -->
-        <form id="chatForm" style="display:none;">
-            <input type="text" id="message" placeholder="Type a message..." required>
-            <button type="submit">Send</button>
-        </form>
-    </section>
+            <!-- Message Input -->
+            <div class="chat-input-section">
+                <form id="chatForm" class="chat-form">
+                    <textarea id="message" class="chat-input" placeholder="Type your message..." required></textarea>
+                    <button type="submit" class="send-button">Send</button>
+                </form>
+            </div>
+        </section>
     </main>
 
-    <!-- Bottom navigation bar -->
+    <!-- Modal for Creating Channels -->
+    <div id="createChannelModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Create New Channel</h2>
+            <form id="createChannelForm">
+                <label for="channel-name">Channel Name:</label>
+                <input type="text" id="channel-name" name="channel-name" placeholder="Enter channel name" required>
+                <button type="submit" class="send-button">Create</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
     <div class="bottom-nav">
         <a href="index.html" class="nav-item">Home</a>
-        <a href="chat.html" class="nav-item">Chat</a>
+        <a href="chat.html" class="nav-item active">Chat</a>
         <a href="transloc.html" class="nav-item">Transloc</a>
         <a href="tips.html" class="nav-item">Tips</a>
         <a href="settings.html" class="nav-item">Settings</a>
     </div>
 
-    <!-- Include Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+    <!-- Firebase and Custom JS -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
 
-    <!-- Include custom chat script -->
+    <!-- Firebase Configuration -->
+    <script src="js/firebase-config.js"></script>
+
+    <!-- Theme Management Script -->
+    <script src="js/theme.js"></script>
+
+    <!-- Chat Functionality Script -->
     <script src="js/chat.js"></script>
 </body>
 </html>

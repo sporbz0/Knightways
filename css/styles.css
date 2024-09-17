@@ -1,419 +1,1384 @@
-/* GENERAL STYLES */
-/* Reset default margins and paddings, set base font and background */
-html, body {
-    height: 100%;
+/* ===========================================
+   Knightways - Comprehensive Stylesheet
+   =========================================== */
+
+/* ============================
+   1. General Styles
+   ============================ */
+
+/* Reset default margins, paddings, and box-sizing */
+* {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    box-sizing: border-box;
 }
 
+/* Set base font and ensure full height */
+html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color var(--transition-duration) ease, color var(--transition-duration) ease;
+    overflow: hidden; /* Prevent body scroll */
+}
+
+/* Make body a flex container for vertical layout */
 body {
+    display: flex;
+    flex-direction: column;
     padding-bottom: 60px; /* Space for the bottom navigation bar */
 }
 
-/* HEADER STYLES */
-/* Main header styling with gradient background and shadow */
-header {
-    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-    font-size: 2em; /* Larger text for more impact */
-    font-weight: bold;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+/* ============================
+   2. Theme Definitions
+   ============================ */
+
+/* Light Theme Variables (Default) */
+:root {
+    /* Background and Text Colors */
+    --background-color: #f4f4f4;
+    --text-color: #333333;
+
+    /* Header Styles */
+    --header-background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    --header-text-color: #ffffff;
+
+    /* Navigation Bar Styles */
+    --nav-background: #333333;
+    --nav-text-color: #ffffff;
+
+    /* Section Styles */
+    --section-background: #f9f9f9;
+    --section-border-color: #dddddd;
+
+    /* Button Styles */
+    --button-background: #007bff;
+    --button-text-color: #ffffff;
+    --button-hover-background: #0056b3;
+    --button-border-radius: 8px;
+
+    /* Input Styles */
+    --input-background: #ffffff;
+    --input-border-color: #cccccc;
+    --input-border-radius: 6px;
+
+    /* Link Styles */
+    --link-color: #007bff;
+    --link-hover-color: #0056b3;
+
+    /* Modal Styles */
+    --modal-background: rgba(0, 0, 0, 0.7);
+    --modal-content-background: var(--section-background);
+    --modal-border-color: var(--section-border-color);
+    --modal-border-radius: 8px;
+    --modal-text-color: var(--text-color);
+
+    /* Other Utilities */
+    --transition-duration: 0.3s;
+
+    /* Chat Specific Variables */
+    --user-message-background: #e1ffc7;
+    --admin-message-background: #d1d1d1;
+    --user-message-color: #333333;
+    --admin-message-color: #333333;
+    --message-padding: 10px 15px;
+    --message-border-radius: 15px;
+    --message-max-width: 70%;
+    --message-font-size: 1em;
+    --send-button-background: #28a745;
+    --send-button-hover-background: #218838;
+    --chat-input-height: 50px;
+
+    /* Sidebar Styles */
+    --sidebar-background: var(--section-background);
+    --sidebar-border-color: var(--section-border-color);
+    --sidebar-width: 250px;
 }
 
-/* Header subtext or additional headings */
-.header2 {
+/* Dark Theme Variables */
+body.dark-theme {
+    --background-color: #121212;
+    --text-color: #e0e0e0;
+
+    --header-background: linear-gradient(135deg, #333333 0%, #000000 100%);
+    --header-text-color: #ffffff;
+
+    --nav-background: #1f1f1f;
+    --nav-text-color: #ffffff;
+
+    --section-background: #1e1e1e;
+    --section-border-color: #333333;
+
+    --button-background: #2196F3;
+    --button-text-color: #ffffff;
+    --button-hover-background: #1976D2;
+
+    --input-background: #2c2c2c;
+    --input-border-color: #444444;
+
+    --link-color: #2196F3;
+    --link-hover-color: #1976D2;
+
+    --modal-content-background: var(--section-background);
+    --modal-text-color: var(--text-color);
+
+    /* Chat Specific Variables */
+    --user-message-background: #2e7d32;
+    --admin-message-background: #424242;
+    --user-message-color: #e0e0e0;
+    --admin-message-color: #e0e0e0;
+    --send-button-background: #43a047;
+    --send-button-hover-background: #388e3c;
+
+    /* Sidebar Styles */
+    --sidebar-background: #1e88e5;
+    --sidebar-border-color: #1565c0;
+}
+
+/* Blue Theme Variables */
+body.blue-theme {
+    --background-color: #e3f2fd;
+    --text-color: #0d47a1;
+
+    --header-background: linear-gradient(135deg, #42a5f5 0%, #1e88e5 100%);
+    --header-text-color: #ffffff;
+
+    --nav-background: #1e88e5;
+    --nav-text-color: #ffffff;
+
+    --section-background: #bbdefb;
+    --section-border-color: #90caf9;
+
+    --button-background: #1e88e5;
+    --button-text-color: #ffffff;
+    --button-hover-background: #1565c0;
+
+    --input-background: #ffffff;
+    --input-border-color: #90caf9;
+
+    --link-color: #1e88e5;
+    --link-hover-color: #1565c0;
+
+    --modal-content-background: var(--section-background);
+    --modal-text-color: var(--text-color);
+
+    /* Chat Specific Variables */
+    --user-message-background: #c8e6c9;
+    --admin-message-background: #90caf9;
+    --user-message-color: #0d47a1;
+    --admin-message-color: #0d47a1;
+    --send-button-background: #1e88e5;
+    --send-button-hover-background: #1565c0;
+
+    /* Sidebar Styles */
+    --sidebar-background: #1e88e5;
+    --sidebar-border-color: #1565c0;
+}
+
+/* Green Theme Variables */
+body.green-theme {
+    --background-color: #e8f5e9;
+    --text-color: #1b5e20;
+
+    --header-background: linear-gradient(135deg, #66bb6a 0%, #43a047 100%);
+    --header-text-color: #ffffff;
+
+    --nav-background: #43a047;
+    --nav-text-color: #ffffff;
+
+    --section-background: #c8e6c9;
+    --section-border-color: #81c784;
+
+    --button-background: #66bb6a;
+    --button-text-color: #ffffff;
+    --button-hover-background: #388e3c;
+
+    --input-background: #ffffff;
+    --input-border-color: #81c784;
+
+    --link-color: #43a047;
+    --link-hover-color: #388e3c;
+
+    --modal-content-background: var(--section-background);
+    --modal-text-color: var(--text-color);
+
+    /* Chat Specific Variables */
+    --user-message-background: #a5d6a7;
+    --admin-message-background: #81c784;
+    --user-message-color: #1b5e20;
+    --admin-message-color: #1b5e20;
+    --send-button-background: #43a047;
+    --send-button-hover-background: #388e3c;
+
+    /* Sidebar Styles */
+    --sidebar-background: #43a047;
+    --sidebar-border-color: #2e7d32;
+}
+
+/* ============================
+   3. Header Styles
+   ============================ */
+
+header {
+    background: var(--header-background);
+    color: var(--header-text-color);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 2em;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    transition: background var(--transition-duration) ease;
+}
+
+header h1 {
     margin: 0;
 }
 
-/* NAVIGATION STYLES */
-/* Navigation bar alignment and spacing */
+/* ============================
+   4. Navigation Styles
+   ============================ */
+
 nav {
     text-align: center;
     margin-top: 15px;
 }
 
-/* Navigation links styling */
 nav a {
     margin: 0 15px;
     text-decoration: none;
-    color: #333;
+    color: var(--nav-text-color);
     font-weight: bold;
+    padding: 8px 12px;
+    border-radius: var(--button-border-radius);
+    transition: background-color var(--transition-duration) ease, color var(--transition-duration) ease;
 }
 
-/* MAIN CONTENT STYLES */
-/* Centering main content */
-main {
-    text-align: center;
+nav a:hover {
+    background-color: var(--button-hover-background);
+    color: var(--nav-text-color);
 }
 
-/* Map text styling */
-.map-text {
-    text-align: left;
-    font-size: 1.5em; /* Increase font size */
-    color: #333;      /* Darker text color */
+/* Active Navigation Item */
+nav a.active {
+    background-color: var(--button-hover-background);
+    color: var(--nav-text-color);
 }
 
-/* FOOTER STYLES */
-/* Footer styling with fixed position at the bottom */
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 0;
+/* ============================
+   5. Main Content Styles
+   ============================ */
+
+main.chat-container,
+main.tips-container,
+main.home-container,
+main.transloc-container,
+main.settings-container {
+    display: flex;
+    flex: 1;
+    gap: 20px; /* Space between sidebar and main content */
+    overflow: hidden; /* Prevent overflow */
+    padding: 20px;
+}
+
+/* General Layout for Pages without Sidebar */
+main.home-container,
+main.transloc-container,
+main.settings-container {
+    flex-direction: column;
+}
+
+/* ============================
+   6. Channels Sidebar Styles (Chat Page)
+   ============================ */
+
+.channels-sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--sidebar-background);
+    border: 1px solid var(--sidebar-border-color);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    transition: background-color var(--transition-duration) ease, border-color var(--transition-duration) ease;
+}
+
+.channels-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--section-border-color);
+}
+
+.channels-header h2 {
+    color: var(--nav-text-color);
+    font-size: 1.2em;
+}
+
+.create-channel-button {
+    background-color: var(--button-background);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color var(--transition-duration) ease;
+}
+
+.create-channel-button:hover {
+    background-color: var(--button-hover-background);
+}
+
+.channels-list {
+    list-style: none;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.channels-list li {
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background-color var(--transition-duration) ease, color var(--transition-duration) ease;
+    border-bottom: 1px solid var(--section-border-color);
+}
+
+.channels-list li:hover,
+.channels-list li.active {
+    background-color: var(--button-hover-background);
+    color: var(--nav-text-color);
+}
+
+/* ============================
+   7. Chat Area Styles (Chat Page)
+   ============================ */
+
+.chat-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--section-background);
+    border: 1px solid var(--section-border-color);
+    border-radius: 8px;
+    transition: background-color var(--transition-duration) ease, border-color var(--transition-duration) ease;
+}
+
+.chat-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--section-border-color);
+    background-color: var(--section-background);
+    transition: background-color var(--transition-duration) ease, border-color var(--transition-duration) ease;
+}
+
+.chat-header h2 {
+    color: var(--text-color);
+    font-size: 1.5em;
+}
+
+.chat-box {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: var(--background-color);
+    transition: background-color var(--transition-duration) ease;
+}
+
+.chat-message {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.user-message {
+    justify-content: flex-start;
+}
+
+.admin-message {
+    justify-content: flex-end;
+}
+
+.chat-profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+    border: 1px solid var(--section-border-color);
+    transition: border-color var(--transition-duration) ease;
+}
+
+.admin-message .chat-profile-image {
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+.message-content {
+    max-width: var(--message-max-width);
+    background-color: var(--user-message-background);
+    color: var(--user-message-color);
+    padding: var(--message-padding);
+    border-radius: var(--message-border-radius);
     position: relative;
-    bottom: 0;
-    width: 100%;
+    word-wrap: break-word;
+    transition: background-color var(--transition-duration) ease, color var(--transition-duration) ease;
 }
 
-/* HERO SECTION STYLES */
-/* Hero section with background image and overlay */
-.hero {
-    background-image: url('../images/HomePageBackground.jpg'); /* Path to background image */
-    background-size: cover;       /* Ensure the image covers the entire section */
-    background-position: center;  /* Center the background image */
-    background-repeat: no-repeat; /* Prevent repeating */
-    color: white;                 /* White text for contrast */
+.admin-message .message-content {
+    background-color: var(--admin-message-background);
+    color: var(--admin-message-color);
+}
+
+.message-timestamp {
+    display: block;
+    font-size: 0.8em;
+    color: #7f8c8d;
+    margin-top: 5px;
+    text-align: right;
+}
+
+/* ============================
+   8. Message Input Area Styles (Chat Page)
+   ============================ */
+
+.chat-input-section {
+    padding: 15px 20px;
+    background-color: var(--section-background);
+    border-top: 1px solid var(--section-border-color);
+    transition: background-color var(--transition-duration) ease, border-color var(--transition-duration) ease;
+}
+
+.chat-form {
+    display: flex;
+    align-items: center;
+}
+
+.chat-input {
+    flex: 1;
+    height: var(--chat-input-height);
+    padding: 10px 15px;
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--input-border-radius);
+    background-color: var(--input-background);
+    color: var(--text-color);
+    resize: none;
+    font-size: 1em;
+    transition: background-color var(--transition-duration) ease, border-color var(--transition-duration) ease, color var(--transition-duration) ease;
+}
+
+.chat-input::placeholder {
+    color: #7f8c8d;
+}
+
+.send-button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: var(--send-button-background);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: var(--button-border-radius);
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color var(--transition-duration) ease;
+}
+
+.send-button:hover {
+    background-color: var(--send-button-hover-background);
+}
+
+/* ============================
+   9. Tips Page Styles
+   ============================ */
+
+.tips-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tip-item {
+    background-color: var(--section-background);
+    border: 1px solid var(--section-border-color);
+    border-radius: 8px;
+    padding: 15px 20px;
+    transition: background-color var(--transition-duration) ease, border-color var(--transition-duration) ease;
+}
+
+.tip-item h3 {
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.tip-item p {
+    color: var(--text-color);
+}
+
+.tip-item:hover {
+    background-color: var(--button-hover-background);
+    color: var(--nav-text-color);
+}
+
+.tip-item:hover h3,
+.tip-item:hover p {
+    color: var(--nav-text-color);
+}
+
+/* ============================
+   10. Home Page Styles
+   ============================ */
+
+   .home-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 20px; /* Space between sections */
+    overflow: hidden; /* Prevent overflow */
+    padding: 20px; /* Optional padding */
+}
+
+/* Map Section */
+.map-section {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Allow the map-section to grow and fill available space */
+    gap: 10px; /* Space between elements */
+}
+
+.hero-section {
+    background-color: var(--section-background);
+    border: 1px solid var(--section-border-color);
+    border-radius: 8px;
+    padding: 30px 20px;
     text-align: center;
-    padding: 100px 20px;          /* Increase padding for larger height */
-    position: relative;           /* Position for overlay stacking */
+    transition: background-color var(--transition-duration) ease, border-color var(--transition-duration) ease;
 }
 
-/* Overlay to darken the hero image for better text readability */
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
+.hero-section h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.hero-section p {
+    font-size: 1.2em;
+    color: var(--text-color);
+}
+
+.features-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.feature-item {
+    flex: 1 1 calc(33.333% - 20px);
+    background-color: var(--section-background);
+    border: 1px solid var(--section-border-color);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: background-color var(--transition-duration) ease, border-color var(--transition-duration) ease;
+}
+
+.feature-item h3 {
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.feature-item p {
+    color: var(--text-color);
+}
+
+.feature-item:hover {
+    background-color: var(--button-hover-background);
+    color: var(--nav-text-color);
+}
+
+.feature-item:hover h3,
+.feature-item:hover p {
+    color: var(--nav-text-color);
+}
+
+@media (max-width: 1024px) {
+    .feature-item {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .feature-item {
+        flex: 1 1 100%;
+    }
+}
+
+/* ============================
+   11. Transloc Page Styles
+   ============================ */
+
+.transloc-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.transloc-item {
+    background-color: var(--section-background);
+    border: 1px solid var(--section-border-color);
+    border-radius: 8px;
+    padding: 15px 20px;
+    transition: background-color var(--transition-duration) ease, border-color var(--transition-duration) ease;
+}
+
+.transloc-item h3 {
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.transloc-item p {
+    color: var(--text-color);
+}
+
+.transloc-item:hover {
+    background-color: var(--button-hover-background);
+    color: var(--nav-text-color);
+}
+
+.transloc-item:hover h3,
+.transloc-item:hover p {
+    color: var(--nav-text-color);
+}
+
+/* ============================
+   12. Settings Page Styles
+   ============================ */
+
+.settings-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.settings-section {
+    background-color: var(--section-background);
+    border: 1px solid var(--section-border-color);
+    border-radius: 8px;
+    padding: 20px;
+    transition: background-color var(--transition-duration) ease, border-color var(--transition-duration) ease;
+}
+
+.settings-section h2 {
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.settings-section label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
+.settings-section input[type="text"],
+.settings-section input[type="password"],
+.settings-section select,
+.settings-section textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--input-border-radius);
+    background-color: var(--input-background);
+    color: var(--text-color);
+    transition: background-color var(--transition-duration) ease, border-color var(--transition-duration) ease, color var(--transition-duration) ease;
+}
+
+.settings-section input[type="checkbox"] {
+    transform: scale(1.2);
+    margin-right: 8px;
+}
+
+.settings-section button {
+    padding: 10px 20px;
+    background-color: var(--button-background);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: var(--button-border-radius);
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color var(--transition-duration) ease;
+}
+
+.settings-section button:hover {
+    background-color: var(--button-hover-background);
+}
+
+/* ============================
+   13. Modal Styles for Creating Channels
+   ============================ */
+
+/* Modal Overlay */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 2000; /* On top of other elements */
     left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
-    z-index: 1;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: var(--modal-background);
 }
 
-/* Content inside the hero section */
-.hero-content {
-    position: relative;
-    z-index: 2; /* Above the overlay */
-    max-width: 800px;
-    margin: auto;
+/* Modal Content */
+.modal-content {
+    background-color: var(--modal-content-background);
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid var(--modal-border-color);
+    width: 90%;
+    max-width: 400px;
+    border-radius: var(--modal-border-radius);
+    color: var(--modal-text-color);
+    transition: background-color var(--transition-duration) ease, border-color var(--transition-duration) ease, color var(--transition-duration) ease;
 }
 
-/* Call-to-action button styling */
-.cta-button {
-    display: inline-block;
-    padding: 10px 20px;
-    color: white;
-    background-color: #007bff;
-    border-radius: 5px;
-    text-decoration: none;
+/* Close Button */
+.close {
+    color: var(--modal-text-color);
+    float: right;
+    font-size: 28px;
     font-weight: bold;
-    margin-top: 15px;
+    cursor: pointer;
+    transition: color var(--transition-duration) ease;
 }
 
-.cta-button:hover {
-    background-color: #0056b3;
+.close:hover,
+.close:focus {
+    color: var(--send-button-hover-background);
+    text-decoration: none;
 }
 
-/* BOTTOM NAVIGATION BAR STYLES */
-/* Fixed bottom navigation bar styling */
+/* ============================
+   14. Bottom Navigation Bar Styles
+   ============================ */
+
 .bottom-nav {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #333;
+    background-color: var(--nav-background);
     display: flex;
     justify-content: space-around;
+    align-items: center;
     padding: 10px 0;
     z-index: 1000;
+    transition: background-color var(--transition-duration) ease;
 }
 
-/* Bottom navigation items styling */
-.nav-item {
+.bottom-nav .nav-item {
     text-align: center;
-    color: #fff;
+    color: var(--nav-text-color);
     text-decoration: none;
     font-weight: bold;
-    padding: 5px;
+    padding: 10px 15px;
+    border-radius: var(--button-border-radius);
+    transition: background-color var(--transition-duration) ease, color var(--transition-duration) ease;
 }
 
-/* WIDGET STYLES */
-/* Placeholder styles for widgets */
-.widget {
-    background-color: #ddd;
-    padding: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-    border: 1px solid #ccc;
+.bottom-nav .nav-item:hover {
+    background-color: var(--button-hover-background);
+    color: var(--nav-text-color);
+}
+
+/* Active Navigation Item */
+.bottom-nav .nav-item.active {
+    background-color: var(--button-hover-background);
+    color: var(--nav-text-color);
+}
+
+/* ============================
+   15. Forms and Inputs
+   ============================ */
+
+/* Universal Button Styles */
+button {
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--transition-duration) ease, color var(--transition-duration) ease;
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 5px var(--button-hover-background);
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="password"],
+input[type="file"],
+select,
+textarea {
     width: 100%;
-    max-width: 1200px; /* Max width for larger screens */
-}
-
-/* GOOGLE MAPS SECTION STYLES */
-/* Map container styling */
-#map {
-    height: 90vh;  /* 90% of viewport height */
-    width: auto;  
-    margin: 0;
-    padding: 50px;
-    box-sizing: border-box;
-    border: 2px solid #0056b3;
-}
-
-/* Style the search box */
-.controls {
-    background-color: #fff;
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-    font-weight: 300;
-    margin-left: 10px;
     padding: 10px;
-    border-radius: 5px;
-    width: 300px;
-    margin-top: 10px;
-    z-index: 5; /* Stay on top of the map */
-    position: absolute;
+    margin-bottom: 15px;
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--input-border-radius);
+    background-color: var(--input-background);
+    color: var(--text-color);
+    transition: background-color var(--transition-duration) ease, border-color var(--transition-duration) ease, color var(--transition-duration) ease;
 }
 
-/* Style for the input box */
-#pac-input {
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+input[type="text"]::placeholder,
+input[type="password"]::placeholder,
+textarea::placeholder {
+    color: #7f8c8d;
 }
 
-/* WEATHER WIDGET STYLES */
-/* Weather widget container styling */
-.weather-container {
-    background-color: #1e1e1e; /* Dark background for contrast */
+/* Checkbox Scaling */
+input[type="checkbox"] {
+    transform: scale(1.2);
+    margin-right: 8px;
+}
+
+/* ============================
+   16. Responsive Design
+   ============================ */
+
+@media (max-width: 1024px) {
+    .features-section {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .feature-item {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    main.chat-container,
+    main.tips-container,
+    main.home-container,
+    main.transloc-container,
+    main.settings-container {
+        flex-direction: column;
+    }
+
+    .channels-sidebar {
+        width: 100%;
+        height: 200px;
+        overflow-x: auto;
+    }
+
+    .chat-area {
+        height: calc(100vh - 320px); /* Adjust based on header, nav, and sidebar heights */
+    }
+
+    .channels-header h2 {
+        font-size: 1em;
+    }
+
+    .channels-header .create-channel-button {
+        width: 25px;
+        height: 25px;
+        font-size: 1em;
+    }
+
+    .chat-header h2 {
+        font-size: 1.2em;
+    }
+
+    .chat-input {
+        height: 40px;
+        padding: 8px 10px;
+        font-size: 0.9em;
+    }
+
+    .send-button {
+        padding: 8px 16px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .channels-sidebar {
+        height: 150px;
+    }
+
+    .chat-area {
+        height: calc(100vh - 300px); /* Adjust based on header, nav, and sidebar heights */
+    }
+
+    .chat-header h2 {
+        font-size: 1em;
+    }
+
+    .chat-input-section {
+        padding: 10px 15px;
+    }
+
+    .create-channel-button {
+        width: 25px;
+        height: 25px;
+    }
+
+    /* Modal Content Adjustments */
+    .modal-content {
+        width: 90%;
+    }
+
+    /* Features Section Adjustments */
+    .feature-item {
+        flex: 1 1 100%;
+    }
+
+    /* Tip and Transloc Items Adjustments */
+    .tip-item,
+    .transloc-item {
+        padding: 15px 10px;
+    }
+
+    .tip-item h3,
+    .transloc-item h3 {
+        font-size: 1.1em;
+    }
+
+    .tip-item p,
+    .transloc-item p {
+        font-size: 0.9em;
+    }
+}
+
+/* ============================
+   17. Utility Classes
+   ============================ */
+
+/* Center Text */
+.text-center {
+    text-align: center;
+}
+
+/* Margin Utilities */
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-20 {
     margin-bottom: 20px;
-    color: white;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Depth effect */
-    border-radius: 8px; /* Smooth corners */
 }
 
-/* Weather widget items */
-.weather-widget {
-    display: flex;
-    justify-content: center; /* Center-align items */
-    gap: 15px; /* Space between items */
+.mt-10 {
+    margin-top: 10px;
 }
 
-/* Individual weather elements */
-.weather-widget-item {
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+/* Padding Utilities */
+.p-20 {
+    padding: 20px;
+}
+
+.p-10 {
     padding: 10px;
-    background-color: #333;
-    border-radius: 4px;
 }
 
-/* MODAL STYLES */
-/* Modal background */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed;
-    z-index: 999; /* On top */
-    padding-top: 60px; /* Padding from the top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0, 0, 0, 0.7); /* Transparent black background */
+/* Flex Utilities */
+.flex {
+    display: flex;
 }
 
-/* Modal content (image) */
-.modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
+.justify-between {
+    justify-content: space-between;
 }
 
-/* Caption of the image */
-#caption {
-    text-align: center;
-    color: #ccc;
-    font-size: 18px;
-    padding: 10px 0;
+.align-center {
+    align-items: center;
 }
 
-/* Close button */
-.close {
+/* Responsive Image */
+.responsive-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* ============================
+   18. Additional Components Styles
+   ============================ */
+
+/* Profile Image Display */
+#currentProfileImage img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--section-border-color);
+    margin-top: 10px;
+    transition: border-color var(--transition-duration) ease;
+}
+
+/* Chat Profile Image Hover Effect */
+.chat-profile-image:hover {
+    border-color: var(--button-hover-background);
+}
+
+/* ============================
+   19. Animations and Transitions
+   ============================ */
+
+/* Smooth Theme Transition for Elements */
+body, header, nav, .settings-section, button, input, select, textarea, .chat-message, .tip-item, .modal-content, .embedded-website-container, #embedded-website, .hero-content h1, .hero-content p, .channels-sidebar, .chat-area, .channels-header, .channels-list li, .send-button, .create-channel-button, .chat-header, .chat-box, .chat-input-section, .message-content, .transloc-item, .feature-item {
+    transition: background-color var(--transition-duration) ease, color var(--transition-duration) ease, border-color var(--transition-duration) ease;
+}
+
+/* ============================
+   20. Responsive Sidebar Toggle (Optional Enhancement)
+   ============================ */
+
+/* Toggle Sidebar Button (Hidden on larger screens) */
+.toggle-sidebar-button {
     position: absolute;
     top: 20px;
-    right: 35px;
-    color: #fff;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 999;
-}
-
-/* EMBEDDED WEBSITE STYLES */
-/* Ensure the iframe fills the available space */
-#embedded-website {
-    width: 100%;
-    height: calc(100vh - 60px); /* Full height minus bottom nav */
+    left: 20px;
+    background: var(--button-background);
+    color: var(--button-text-color);
     border: none;
-    display: block;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    display: none; /* Hidden on larger screens */
+    transition: background-color var(--transition-duration) ease;
 }
 
-/* TIPS PAGE STYLES */
-/* General tips section */
-.general-tips {
-    background-color: #f9f9f9; /* Light background */
-    border-left: 4px solid #007bff; /* Blue border */
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px; /* Rounded corners */
+.toggle-sidebar-button:hover {
+    background-color: var(--button-hover-background);
 }
 
-.general-tips h2 {
-    color: #007bff; /* Blue heading */
-    font-size: 1.8em;
-    margin-bottom: 10px;
+@media (max-width: 768px) {
+    .toggle-sidebar-button {
+        display: block;
+    }
+
+    .channels-sidebar {
+        position: fixed;
+        left: -270px; /* Hide sidebar by default */
+        top: 80px; /* Below the header */
+        height: calc(100% - 140px); /* Adjust based on header and nav heights */
+        transition: left var(--transition-duration) ease;
+        z-index: 1500;
+    }
+
+    .channels-sidebar.active {
+        left: 20px; /* Show sidebar */
+    }
+
+    main.chat-container {
+        padding: 0; /* Remove padding on smaller screens */
+    }
 }
 
-.general-tips ul {
-    list-style-type: disc;
-    margin-left: 20px;
+/* ============================
+   21. Modal Animations (Optional Enhancement)
+   ============================ */
+
+/* Modal Slide-Down Animation */
+.modal-content {
+    animation-name: slideDown;
+    animation-duration: var(--transition-duration);
 }
 
-.general-tips ul li {
-    margin-bottom: 10px;
-    font-size: 1.1em;
-    color: #333;
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
-/* Transportation tips section */
-.transportation-tips {
-    background-color: #e8f4e5; /* Light green background */
-    border-left: 4px solid #28a745; /* Green border */
-    padding: 20px;
-    margin-bottom: 20px;
+
+#map {
+    width: 100%;
+    height: 100%; /* Adjust the height as needed */
+    border: 1px solid var(--section-border-color);
     border-radius: 8px;
 }
 
-.transportation-tips h2 {
-    color: #28a745; /* Green heading */
-    font-size: 1.8em;
-    margin-bottom: 10px;
+/* ============================
+   1. Transloc Container Styles
+   ============================ */
+
+   .transloc-container {
+    display: flex;
+    flex: 1; /* Allows the container to grow and fill available space */
+    padding: 20px; /* Optional padding around the iframe */
+    box-sizing: border-box; /* Ensures padding is included in the total width and height */
+    height: calc(100vh - 100px); /* Adjusts height based on header and nav bar heights */
 }
 
-.transportation-tips ul {
-    list-style-type: disc;
-    margin-left: 20px;
+.transloc-container iframe {
+    flex: 1; /* Makes the iframe grow to fill the container */
+    width: 100%;
+    height: 100%;
+    border: none; /* Removes default iframe border */
+    border-radius: 8px; /* Matches the design aesthetic */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for depth */
 }
 
-.transportation-tips ul li {
-    margin-bottom: 10px;
-    font-size: 1.1em;
-    color: #333;
+/* ============================
+   2. Responsive Adjustments
+   ============================ */
+
+   @media (max-width: 768px) {
+    .transloc-container {
+        padding: 15px;
+        height: calc(100vh - 80px); /* Adjust based on reduced padding or nav height */
+    }
+
+    .transloc-container iframe {
+        border-radius: 6px;
+    }
 }
 
-/* Study tips section */
-.study-tips {
-    background-color: #f2f2f9; /* Light purple background */
-    border-left: 4px solid #6f42c1; /* Purple border */
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
+@media (max-width: 480px) {
+    .transloc-container {
+        padding: 10px;
+        height: calc(100vh - 60px); /* Further adjustment for smaller screens */
+    }
+
+    .transloc-container iframe {
+        border-radius: 4px;
+    }
 }
 
-.study-tips h2 {
-    color: #6f42c1; /* Purple heading */
-    font-size: 1.8em;
-    margin-bottom: 10px;
+/* styles.css */
+
+/* ============================
+   1. Tips Container Styles
+   ============================ */
+
+   .tips-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Allows the container to grow and fill available space */
+    padding: 20px; /* Optional padding around the content */
+    box-sizing: border-box; /* Ensures padding is included in the total width and height */
+    overflow-y: auto; /* Enables vertical scrolling if content overflows */
+    height: calc(100vh - 100px); /* Adjusts height based on header and nav bar heights */
 }
 
-.study-tips ul {
-    list-style-type: disc;
-    margin-left: 20px;
+/* ============================
+   2. Tips Overview Styles
+   ============================ */
+
+.tips-overview {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--text-color);
 }
 
-.study-tips ul li {
-    margin-bottom: 10px;
-    font-size: 1.1em;
-    color: #333;
+.tips-overview p {
+    font-size: 1.2em;
 }
 
-/* TIPS FORM STYLES */
-/* Form section styling */
+/* ============================
+   3. Add Tip Form Styles
+   ============================ */
+
 .add-tip-form {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 20px;
-    margin: 20px 0;
+    background-color: var(--section-background);
+    border: 1px solid var(--section-border-color);
     border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    transition: background-color var(--transition-duration) ease, border-color var(--transition-duration) ease;
 }
 
 .add-tip-form h2 {
-    font-size: 1.8em;
-    margin-bottom: 10px;
-    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--text-color);
 }
 
-.add-tip-form form {
+.add-tip-form .form-group {
     display: flex;
     flex-direction: column;
+    margin-bottom: 15px;
 }
 
 .add-tip-form label {
-    font-size: 1.2em;
     margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--text-color);
 }
 
 .add-tip-form textarea,
 .add-tip-form select {
     padding: 10px;
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--input-border-radius);
+    background-color: var(--input-background);
+    color: var(--text-color);
     font-size: 1em;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    resize: vertical;
+    transition: border-color var(--transition-duration) ease, background-color var(--transition-duration) ease, color var(--transition-duration) ease;
 }
 
-.add-tip-form button {
+.add-tip-form textarea:focus,
+.add-tip-form select:focus {
+    border-color: var(--button-hover-background);
+    outline: none;
+}
+
+.add-tip-form .btn {
+    width: 100%;
     padding: 10px;
-    background-color: #007bff;
-    color: white;
-    font-size: 1em;
+    background-color: var(--button-background);
+    color: var(--button-text-color);
     border: none;
-    border-radius: 4px;
+    border-radius: var(--button-border-radius);
+    font-size: 1em;
     cursor: pointer;
+    transition: background-color var(--transition-duration) ease, color var(--transition-duration) ease;
 }
 
-.add-tip-form button:hover {
-    background-color: #0056b3;
+.add-tip-form .btn:hover {
+    background-color: var(--button-hover-background);
+    color: var(--nav-text-color);
 }
 
-/* RESPONSIVE ADJUSTMENTS */
-/* Adjustments for screens less than 768px wide */
+/* ============================
+   4. Tips Display Styles
+   ============================ */
+
+.tips-display {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Space between tip sections */
+}
+
+/* Tip Section */
+.tips-section {
+    background-color: var(--section-background);
+    border: 1px solid var(--section-border-color);
+    border-radius: 8px;
+    padding: 20px;
+    transition: background-color var(--transition-duration) ease, border-color var(--transition-duration) ease;
+}
+
+.tips-section h2 {
+    margin-bottom: 15px;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.tips-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tips-list li {
+    background-color: var(--background-color);
+    border: 1px solid var(--section-border-color);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    transition: background-color var(--transition-duration) ease, border-color var(--transition-duration) ease;
+}
+
+.tips-list li:hover {
+    background-color: var(--button-hover-background);
+    color: var(--nav-text-color);
+}
+
+.tips-list li h3 {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: var(--text-color);
+}
+
+.tips-list li p {
+    font-size: 1em;
+    color: var(--text-color);
+}
+
+.tip-profile-image {
+    width: 50px;  /* Set the width to a reasonable size */
+    height: 50px; /* Ensure a consistent height */
+    border-radius: 50%;  /* Make the image circular */
+    object-fit: cover;  /* Ensure the image scales without distortion */
+    margin-right: 10px;  /* Add some space between the image and the text */
+}
+
+/* ============================
+   5. Responsive Adjustments
+   ============================ */
+
 @media (max-width: 768px) {
-    /* Map adjustments */
-    #map {
-        width: 100%;
-        height: 100vh;   /* Full viewport height */
-        margin-bottom: 40px;
+    .tips-container {
+        padding: 15px;
+        height: calc(100vh - 80px); /* Adjust based on reduced padding or nav height */
     }
 
-    /* Search box adjustments */
-    .controls {
-        position: relative;
-        margin-top: 10px;
-        display: block;
-        width: calc(100% - 40px); /* Adjust width */
-        margin-left: auto;
-        margin-right: auto;
+    .add-tip-form {
+        padding: 15px;
     }
 
-    /* Embedded website adjustments */
-    #embedded-website {
-        transform: scale(1.0);
-        width: 100%;
-        height: calc(100vh - 60px); /* Full height minus bottom nav */
-        overflow: hidden;
+    .tips-section h2 {
+        font-size: 1.5em;
+    }
+
+    .tips-list li {
+        padding: 10px;
+    }
+
+    .tips-list li h3 {
+        font-size: 1.1em;
+    }
+
+    .tips-list li p {
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 480px) {
+    .tips-container {
+        padding: 10px;
+        height: calc(100vh - 60px); /* Further adjustment for smaller screens */
+    }
+
+    .add-tip-form {
+        padding: 10px;
+    }
+
+    .add-tip-form .form-group {
+        margin-bottom: 10px;
+    }
+
+    .add-tip-form textarea,
+    .add-tip-form select {
+        font-size: 0.9em;
+    }
+
+    .add-tip-form .btn {
+        font-size: 0.9em;
+    }
+
+    .tips-section h2 {
+        font-size: 1.3em;
+    }
+
+    .tips-list li {
+        padding: 8px;
+    }
+
+    .tips-list li h3 {
+        font-size: 1em;
+    }
+
+    .tips-list li p {
+        font-size: 0.9em;
     }
 }

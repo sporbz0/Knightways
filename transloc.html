@@ -4,27 +4,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Knightways Website</title>
+    <title>Knightways - Transloc</title>
+    <!-- Link to the updated stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-
-    <main class="embedded-website">
-        <!-- Embedded Transloc Website in an iframe -->
-        <iframe src="https://ucf.transloc.com/routes" id="embedded-website" frameborder="0"></iframe>
+    <!-- Main Content -->
+    <main class="transloc-container">
+        <!-- Embedded Transloc Site -->
+        <iframe src="https://ucf.transloc.com/routes" title="Transloc Service" frameborder="0"></iframe>
     </main>
 
-    <!-- Bottom navigation bar -->
-    <div class="bottom-nav">
+    <!-- Bottom Navigation Bar -->
+    <nav class="bottom-nav">
         <a href="index.html" class="nav-item">Home</a>
         <a href="chat.html" class="nav-item">Chat</a>
-        <a href="transloc.html" class="nav-item">Transloc</a> 
+        <a href="transloc.html" class="nav-item active">Transloc</a>
         <a href="tips.html" class="nav-item">Tips</a>
         <a href="settings.html" class="nav-item">Settings</a>
+    </nav>
+
+    <!-- Modal Structure (If Applicable) -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage" alt="Expanded View">
+        <div id="caption"></div>
     </div>
 
+    <!-- Scripts placed just before closing body tag -->
+    <!-- Firebase SDKs (Loaded First) -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
+
+    <!-- Firebase Configuration -->
+    <script src="js/firebase-config.js"></script>
+
+    <!-- Theme Management Script -->
+    <script src="js/theme.js"></script>
+
+    <!-- Link to map custom script (if used) -->
+    <script src="js/map.js"></script>
+
+    <!-- Google Maps Script (if used) -->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap&libraries=places"
+        async defer></script>
 </body>
 
 </html>

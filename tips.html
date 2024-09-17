@@ -1,80 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tips | Knightways</title>
+    <!-- Link to the updated stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
 
+<body>
+    <!-- Header Section -->
     <header>
         <h1>Campus Tips and Tricks</h1>
     </header>
 
-    <!-- Form for Adding Tips -->
-    <section class="add-tip-form">
-        <h2>Have a Tip? Add It Below!</h2>
-        <form id="tipForm">
-            <label for="tipText">Your Tip:</label>
-            <textarea id="tipText" placeholder="Enter your tip here..." required></textarea>
-
-            <label for="tipCategory">Category:</label>
-            <select id="tipCategory" required>
-                <option value="general">General</option>
-                <option value="transportation">Transportation</option>
-                <option value="study">Study</option>
-            </select>
-
-            <button type="submit">Add Tip</button>
-        </form>
-    </section>
-
-    <!-- Main Content Section -->
-    <main class="tips-content">
-        <section class="general-tips">
-            <h2>General Tips for Navigating Campus</h2>
-            <ul id="generalTipsList">
-                <li>Use the UCF shuttle system to get around campus faster during peak hours.</li>
-                <li>Check building numbers ahead of time to avoid getting lost.</li>
-                <li>Use the Knightways interactive map to find buildings and rooms with ease.</li>
-                <li>Take advantage of on-campus dining options during breaks between classes.</li>
-            </ul>
+    <!-- Main Content -->
+    <main class="tips-container">
+        <!-- Tips Overview -->
+        <section class="tips-overview">
+            <p>
+                Welcome to the Campus Tips & Tricks page! Here you can add and explore valuable insights to help you navigate campus life more effectively.
+            </p>
         </section>
 
-        <section class="transportation-tips">
-            <h2>Transportation Tips</h2>
-            <ul id="transportationTipsList">
-                <li>Download the UCF Transloc app for real-time shuttle tracking.</li>
-                <li>Use the bike racks located at all major buildings for easy transport.</li>
-                <li>Parking garages tend to fill up quickly, so arrive early to secure a spot.</li>
-            </ul>
+        <!-- Form for Adding Tips -->
+        <section class="add-tip-form">
+            <h2>Have a Tip? Add It Below!</h2>
+            <form id="tipForm">
+                <div class="form-group">
+                    <label for="tipText">Your Tip:</label>
+                    <textarea id="tipText" placeholder="Enter your tip here..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipCategory">Category:</label>
+                    <select id="tipCategory" required>
+                        <option value="" disabled selected>Select a category</option>
+                        <option value="general">General</option>
+                        <option value="transportation">Transportation</option>
+                        <option value="study">Study</option>
+                        <!-- Add more categories as needed -->
+                    </select>
+                </div>
+
+                <button type="submit" class="btn">Add Tip</button>
+            </form>
         </section>
 
-        <section class="study-tips">
-            <h2>Study and Campus Resources</h2>
-            <ul id="studyTipsList">
-                <li>The John C. Hitt Library is the best place for quiet study sessions.</li>
-                <li>Reserve study rooms ahead of time during exam periods to ensure a spot.</li>
-                <li>Take advantage of campus tutoring services for extra academic support.</li>
-            </ul>
+        <!-- Tips Display Section -->
+        <section class="tips-display">
+            <!-- General Tips -->
+            <section class="tips-section">
+                <h2>General Tips for Navigating Campus</h2>
+                <ul id="generalTipsList" class="tips-list">
+                    <!-- Tips will be dynamically loaded here -->
+                </ul>
+            </section>
+
+            <!-- Transportation Tips -->
+            <section class="tips-section">
+                <h2>Transportation Tips</h2>
+                <ul id="transportationTipsList" class="tips-list">
+                    <!-- Tips will be dynamically loaded here -->
+                </ul>
+            </section>
+
+            <!-- Study Tips -->
+            <section class="tips-section">
+                <h2>Study and Campus Resources</h2>
+                <ul id="studyTipsList" class="tips-list">
+                    <!-- Tips will be dynamically loaded here -->
+                </ul>
+            </section>
         </section>
     </main>
 
-    <footer>
-    </footer>
-
-    <!-- Bottom navigation bar -->
-    <div class="bottom-nav">
+    <!-- Bottom Navigation Bar -->
+    <nav class="bottom-nav">
         <a href="index.html" class="nav-item">Home</a>
         <a href="chat.html" class="nav-item">Chat</a>
         <a href="transloc.html" class="nav-item">Transloc</a>
-        <a href="tips.html" class="nav-item">Tips</a>
+        <a href="tips.html" class="nav-item active">Tips</a>
         <a href="settings.html" class="nav-item">Settings</a>
+    </nav>
+
+    <!-- Modal Structure (If Applicable) -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage" alt="Expanded View">
+        <div id="caption"></div>
     </div>
 
+    <!-- Firebase SDKs (Compat) -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
+
+    <!-- Firebase Configuration -->
+    <script src="js/firebase-config.js"></script>
+
+    <!-- Theme Management Script -->
+    <script src="js/theme.js"></script>
+
+    <!-- Custom JS for Tips Functionality -->
     <script src="js/tips.js"></script>
 
 </body>
+
 </html>
