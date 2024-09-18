@@ -284,7 +284,6 @@ main.settings-container {
     flex: 1;
     gap: 20px; /* Space between sidebar and main content */
     padding: 20px;
-    overflow-y: auto;
 }
 
 /* General Layout for Pages without Sidebar */
