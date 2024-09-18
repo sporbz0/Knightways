@@ -48,44 +48,42 @@ tipForm.addEventListener('submit', async function(e) {
     }
 });
 
-// Function to render a tip with user image
+// Function to render a tip with user image and username
 async function renderTip(doc) {
     const tip = doc.data();
     const tipElement = document.createElement('li');
     tipElement.classList.add('tip-item');
 
-    // Fetch user's profile image and username from Firestore
+    // Default values for profile image and username
     let profileImage = 'images/default-avatar.png'; // Default avatar
-    let username = tip.username;
+    let username = tip.username || 'Anonymous'; // Default username if not available
 
+    // Fetch user's profile image and username from Firestore if userId exists
     if (tip.userId) {
         try {
             const userDoc = await db.collection('users').doc(tip.userId).get();
             if (userDoc.exists) {
                 const userData = userDoc.data();
-                if (userData.profileImage) {
-                    profileImage = userData.profileImage;
-                }
-                if (userData.username) {
-                    username = userData.username;
-                }
+                // Update profileImage and username if they exist in the Firestore document
+                profileImage = userData.profileImage || profileImage;
+                username = userData.username || username;
             }
         } catch (error) {
             console.error("Error fetching user data: ", error);
         }
     }
 
-    // Create image element
+    // Create image element for profile picture
     const img = document.createElement('img');
     img.src = profileImage;
     img.alt = 'Profile Image';
     img.classList.add('tip-profile-image');
 
-    // Create tip content
+    // Create content element for the tip text with username
     const content = document.createElement('span');
     content.textContent = `${username}: ${tip.text}`;
 
-    // Append to tip element
+    // Append the profile image and content to the tip element
     tipElement.appendChild(img);
     tipElement.appendChild(content);
 
@@ -98,6 +96,7 @@ async function renderTip(doc) {
         studyTipsList.appendChild(tipElement);
     }
 }
+
 
 // Listen for real-time updates and display tips
 db.collection('tips').orderBy('createdAt', 'desc').onSnapshot(snapshot => {
