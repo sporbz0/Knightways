@@ -283,7 +283,6 @@ main.settings-container {
     display: flex;
     flex: 1;
     gap: 20px; /* Space between sidebar and main content */
-    overflow: auto; /* Prevent overflow */
     padding: 20px;
     overflow-y: auto;
 }
