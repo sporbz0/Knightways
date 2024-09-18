@@ -89,6 +89,7 @@ body {
     --send-button-background: #28a745;
     --send-button-hover-background: #218838;
     --chat-input-height: 50px;
+    --user-text-color: #000000;
 
     /* Sidebar Styles */
     --sidebar-background: var(--section-background);
@@ -130,6 +131,7 @@ body.dark-theme {
     --admin-message-color: #e0e0e0;
     --send-button-background: #43a047;
     --send-button-hover-background: #388e3c;
+    --user-text-color: #ffffff;
 
     /* Sidebar Styles */
     --sidebar-background: #1e88e5;
@@ -170,6 +172,7 @@ body.blue-theme {
     --admin-message-color: #0d47a1;
     --send-button-background: #1e88e5;
     --send-button-hover-background: #1565c0;
+    --user-text-color: #000000;
 
     /* Sidebar Styles */
     --sidebar-background: #1e88e5;
@@ -210,6 +213,7 @@ body.green-theme {
     --admin-message-color: #1b5e20;
     --send-button-background: #43a047;
     --send-button-hover-background: #388e3c;
+    --user-text-color: #000000;
 
     /* Sidebar Styles */
     --sidebar-background: #43a047;
@@ -313,7 +317,7 @@ main.settings-container {
 }
 
 .channels-header h2 {
-    color: var(--nav-text-color);
+    color: var(--text-color);
     font-size: 1.2em;
 }
 
@@ -758,6 +762,44 @@ main.settings-container {
     color: var(--send-button-hover-background);
     text-decoration: none;
 }
+
+/* New Image Modal Overlay for maps*/
+.image-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 3000; /* On top of other elements */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Disable scroll */
+    background-color: rgba(0, 0, 0, 0.7); /* Dim background effect */
+}
+
+/* New Image Modal Content */
+.image-modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center horizontally and vertically */
+    max-width: 90%; /* Responsive width */
+    max-height: 90%; /* Responsive height */
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+
+/* Optional: Add a close button style */
+.image-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
 
 /* ============================
    14. Bottom Navigation Bar Styles
@@ -1382,3 +1424,169 @@ body, header, nav, .settings-section, button, input, select, textarea, .chat-mes
         font-size: 0.9em;
     }
 }
+
+/* Sign-In/Sign-Up Form in Sidebar */
+.auth-container {
+    padding: 15px;
+    border-top: 1px solid var(--section-border-color);
+    background-color: var(--section-background);
+}
+
+#auth-form input {
+    display: block;
+    margin-bottom: 10px;
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#auth-form button {
+    margin-right: 5px;
+    padding: 8px 12px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100%; /* Full width buttons */
+    margin-bottom: 10px;
+}
+
+#auth-form button:hover {
+    background-color: #0056b3;
+}
+
+#user-info {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.chat-username {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+/* Container for message */
+.chat-message-container {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-start; /* Align message to the left */
+}
+
+/* Wrapper for the profile image and content */
+.message-wrapper {
+    display: flex;
+    align-items: flex-start;
+}
+
+/* Profile image on the left */
+.chat-profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px; /* Space between profile picture and message content */
+}
+
+/* Wrapper for username and message bubble */
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Username above the chat bubble */
+.chat-username {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 3px; /* Small space between username and message bubble */
+}
+
+/* Chat bubble (message content) */
+.message-content {
+    background-color: #444;
+    padding: 10px;
+    border-radius: 12px;
+    max-width: 400px; /* Set maximum width for the chat bubble */
+    word-wrap: break-word; /* Allow long messages to wrap within the bubble */
+    display: inline-block; /* Ensure the bubble adjusts to the content size */
+}
+
+/* Chat message text */
+.message-text {
+    color: var(--user-text-color);
+}
+
+/* Timestamp below the message */
+.message-timestamp {
+    font-size: 12px;
+    color: #bbb;
+    margin-top: 5px;
+    text-align: right;
+    width: 100%; /* Align the timestamp to the right */
+}
+
+/* Chat bubble for user messages */
+.user-message .message-content {
+    background-color: var(--user-message-background); /* User-specific message background */
+    color: var(--user-message-color); /* User-specific message text color */
+}
+
+/* Chat bubble for admin messages */
+.admin-message .message-content {
+    background-color: var(--admin-message-background); /* Admin-specific message background */
+    color: var(--admin-message-color); /* Admin-specific message text color */
+}
+
+/* Chat profile image border (optional) */
+.chat-profile-image {
+    border: 1px solid var(--section-border-color); /* Adjust border color dynamically */
+}
+
+/* Timestamp style */
+.message-timestamp {
+    font-size: 0.8em;
+    color: #7f8c8d;
+    margin-top: 5px;
+    text-align: right;
+}
+
+/* Message menu styles */
+.message-menu {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    position: absolute;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message-option {
+    padding: 10px;
+    cursor: pointer;
+    color: #333;
+    text-align: center;
+}
+
+.message-option:hover {
+    background-color: #f0f0f0;
+}
+
+
+
+#auth-signout {
+    background-color: rgba(219, 11, 11, 0.781); /* Match the primary button theme */
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#auth-signout:hover {
+    background-color: var(--primary-button-hover-bg); /* Hover color */
+}
+

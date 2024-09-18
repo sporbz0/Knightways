@@ -22,6 +22,21 @@
             </ul>
         </aside>
 
+            <!-- Add Sign-In/Sign-Up Section Here -->
+    <div id="auth-container" class="auth-container">
+        <div id="auth-form">
+            <h3>Sign In / Sign Up</h3>
+            <input type="email" id="auth-email" placeholder="Email" required />
+            <input type="password" id="auth-password" placeholder="Password" required />
+            <button id="auth-signin">Sign In</button>
+            <button id="auth-signup">Sign Up</button>
+        </div>
+        <div id="user-info" style="display:none;">
+            <p><span id="user-email"></span></p>
+            <button id="auth-signout">Sign Out</button>
+        </div>
+    </div>
+
         <!-- Chat Area -->
         <section class="chat-area">
             <!-- Chat Header -->
@@ -80,5 +95,6 @@
 
     <!-- Chat Functionality Script -->
     <script src="js/chat.js"></script>
+    <script src="js/auth.js"></script>
 </body>
 </html>

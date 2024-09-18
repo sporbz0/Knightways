@@ -39,9 +39,13 @@
             </div>
         </section>
 
+
+
         <!-- Map Section -->
         <section class="map-section">
-            <h2 class="header2">Check out the Interactive Map to Explore Campus with Interior Maps</h2>
+            <h2 class="header2">Check out the Interactive Map to Explore Campus with Interior Maps. Click the <img
+                    src="images/MapIcon.png" alt="Map Icon" style="width: 24px; height: 24px; vertical-align: middle;">
+                to see interiors.</h2>
 
             <!-- Search Box for the Map -->
             <input id="pac-input" class="controls" type="text" placeholder="Search for buildings">
@@ -60,12 +64,19 @@
         <a href="settings.html" class="nav-item">Settings</a>
     </nav>
 
-    <!-- Modal Structure -->
+    <!-- Modal Structure
     <div id="imageModal" class="modal">
         <span class="close">&times;</span>
         <img class="modal-content" id="modalImage" alt="Expanded View">
         <div id="caption"></div>
     </div>
+-->
+    <!-- New Image Modal -->
+    <div id="imageModal" class="image-modal">
+        <span class="image-modal-close" id="closeModal">&times;</span>
+        <img id="modalImage" class="image-modal-content" src="" alt="Interior Map">
+    </div>
+
 
     <!-- Scripts placed just before closing body tag -->
     <!-- Firebase SDKs (Loaded First) -->

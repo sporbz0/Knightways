@@ -1,6 +1,7 @@
 // Check if Firebase is initialized and Firebase services are available
 auth = window.firebaseAuth;
 db = window.firebaseDB;
+const storage = window.firebaseStorage;
 
 
 // DOM Elements
@@ -15,7 +16,7 @@ const profileImageForm = document.getElementById('profileImageForm');
 const profileImageInput = document.getElementById('profileImage');
 const currentProfileImageDiv = document.getElementById('currentProfileImage');
 
-const themeSelector = document.getElementById('themeSelector');
+const themeSelector = document.getElementById('theme-selector');
 
 // Function to load current profile image
 async function loadCurrentProfileImage(user) {
@@ -59,6 +60,8 @@ usernameForm.addEventListener('submit', async (e) => {
             return;
         }
 
+        console.log("User UID:", user.uid); // Debugging
+
         // Optional: Check if username is already taken
         const usernameQuery = await db.collection('users').where('username', '==', newUsername).get();
         if (!usernameQuery.empty) {
@@ -80,9 +83,14 @@ usernameForm.addEventListener('submit', async (e) => {
         newUsernameInput.value = '';
     } catch (error) {
         console.error("Error updating username: ", error);
-        alert(error.message);
+        if (error.code === 'permission-denied') {
+            alert("Insufficient permissions to update the username.");
+        } else {
+            alert("An error occurred: " + error.message);
+        }
     }
 });
+
 
 // Change Password Handler
 passwordForm.addEventListener('submit', async (e) => {
@@ -227,7 +235,12 @@ async function loadThemePreference(userId) {
     }
 
     // Set the theme selector value
-    themeSelector.value = selectedTheme;
+    if (themeSelector) {
+        themeSelector.value = selectedTheme;
+    } else {
+        console.error("Theme selector element is missing.");
+    }
+    
 
     // Remove existing theme classes
     document.body.classList.remove('dark-theme', 'blue-theme'); // Add more theme classes here

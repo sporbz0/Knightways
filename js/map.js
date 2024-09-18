@@ -108,17 +108,19 @@ function openModal(imageUrl, captionText) {
 // Ensure DOM is loaded before attaching event listeners
 document.addEventListener('DOMContentLoaded', function() {
     var modal = document.getElementById("imageModal");
-    var span = document.getElementsByClassName("close")[0];
+    var closeBtn = document.getElementById("closeModal");
 
     // Close the modal when the user clicks on the close button (x)
-    span.onclick = function() {
+    closeBtn.onclick = function() {
         modal.style.display = "none";
-    }
+    };
 
     // Close the modal if the user clicks anywhere outside the image
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
-    }
+    };
 });
+
+
