@@ -229,11 +229,11 @@ header {
     color: var(--header-text-color);
     text-align: center;
     padding: 20px 0;
-    font-size: 2em;
+    margin: 0;
+    font-size: 16px;
     font-weight: bold;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-radius: 10px;
     transition: background var(--transition-duration) ease;
 }
 
@@ -282,9 +282,8 @@ main.transloc-container,
 main.settings-container {
     display: flex;
     flex: 1;
-    gap: 20px; /* Space between sidebar and main content */
-    padding: 20px;
-    overflow-y: auto;
+    gap: 15px; /* Space between sidebar and main content */
+    padding-top: 20px;
 }
 
 /* General Layout for Pages without Sidebar */
@@ -366,7 +365,7 @@ main.settings-container {
     flex-direction: column;
     background-color: var(--section-background);
     border: 1px solid var(--section-border-color);
-    border-radius: 8px;
+    border-radius: 10px;
     transition: background-color var(--transition-duration) ease, border-color var(--transition-duration) ease;
 }
 
@@ -1204,9 +1203,8 @@ body, header, nav, .settings-section, button, input, select, textarea, .chat-mes
     display: flex;
     flex-direction: column;
     flex: 1; /* Allows the container to grow and fill available space */
-    padding: 20px; /* Optional padding around the content */
     box-sizing: border-box; /* Ensures padding is included in the total width and height */
-    overflow-y: auto; /* Enables vertical scrolling if content overflows */
+    /* overflow-y: auto;  Enables vertical scrolling if content overflows */
     height: calc(100vh - 100px); /* Adjusts height based on header and nav bar heights */
 }
 
@@ -1427,9 +1425,10 @@ body, header, nav, .settings-section, button, input, select, textarea, .chat-mes
 
 /* Sign-In/Sign-Up Form in Sidebar */
 .auth-container {
-    padding: 15px;
+    padding: 10px;
     border-top: 1px solid var(--section-border-color);
     background-color: var(--section-background);
+    border-radius: 10px;
 }
 
 #auth-form input {
@@ -1590,3 +1589,12 @@ body, header, nav, .settings-section, button, input, select, textarea, .chat-mes
     background-color: var(--primary-button-hover-bg); /* Hover color */
 }
 
+/* Wrapper Styles */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full viewport height */
+    width: 100vw;  /* Full viewport width */
+    padding: 10px;
+    overflow-y: auto;
+}
