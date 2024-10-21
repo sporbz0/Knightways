@@ -10,11 +10,52 @@
 </head>
 
 <body>
+    <!-- Wrapper for the main content including header, right-side, and main content -->
     <div class="wrapper">
-        <!-- Header Section -->
-        <header>
-            <h1>Campus Tips and Tricks</h1>
-        </header>
+        <!-- Wrapper for Header and Right Section -->
+        <div class="header-wrapper">
+            <!-- Main Header Section -->
+            <header class="main-header">
+                <div class="header-content">
+                    <div class="header-center">
+                        <h1>Campus Tips & Tricks</h1>
+                        <div class="hero-text">
+                            <h2>Your Guide to Navigating Campus Life</h2>
+                            <p>Add and explore valuable tips to make your campus experience smoother and more enjoyable.</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Sign-in Section (Header Right) -->
+            <div class="header-right">
+                <select id="theme-selector">
+                    <option value="light-theme">Light</option>
+                    <option value="dark-theme">Dark</option>
+                    <option value="blue-theme">Blue</option>
+                    <option value="green-theme">Green</option>
+                </select>
+
+                <!-- Authentication Form -->
+                <div id="auth-form">
+                    <input type="email" id="auth-email" placeholder="Email" required />
+                    <input type="password" id="auth-password" placeholder="Password" required />
+
+                    <!-- Loading Spinner -->
+                    <div id="auth-loading" class="loading-spinner" style="display: none;"></div>
+
+                    <div id="auth-error" class="error-message" style="display: none;"></div>
+                    <button id="auth-signin">Sign In</button>
+                    <button id="auth-signup">Sign Up</button>
+                </div>
+
+                <!-- User Information Display (Initially Hidden) -->
+                <div id="user-info" style="display: none;">
+                    <span id="user-email">Welcome, Guest</span>
+                    <button id="auth-signout">Sign Out</button>
+                </div>
+            </div>
+        </div>
 
         <!-- Main Content -->
         <main class="tips-container">
@@ -105,6 +146,9 @@
 
     <!-- Theme Management Script -->
     <script src="js/theme.js"></script>
+
+    <!-- Auth Script -->
+    <script src="js/auth.js"></script>
 
     <!-- Custom JS for Tips Functionality -->
     <script src="js/tips.js"></script>

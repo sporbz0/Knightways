@@ -24,8 +24,11 @@ if (typeof firebase === 'undefined') {
 
             // Expose Firebase services globally for access in other scripts
             window.firebaseAuth = firebase.auth();
+            console.log('window.firebaseAuth:', window.firebaseAuth);
             window.firebaseDB = firebase.firestore();
+            console.log('window.firebaseDB:', window.firebaseDB);
             window.firebaseStorage = firebase.storage();
+            console.log('window.firebaseStorage:', window.firebaseStorage);
         } catch (error) {
             console.error('Firebase initialization error:', error);
         }
@@ -34,12 +37,15 @@ if (typeof firebase === 'undefined') {
         // Reassign services globally if Firebase has already been initialized
         if (!window.firebaseAuth) {
             window.firebaseAuth = firebase.auth();
+            console.log('window.firebaseAuth reassigned:', window.firebaseAuth);
         }
         if (!window.firebaseDB) {
             window.firebaseDB = firebase.firestore();
+            console.log('window.firebaseDB reassigned:', window.firebaseDB);
         }
         if (!window.firebaseStorage) {
             window.firebaseStorage = firebase.storage();
+            console.log('window.firebaseStorage reassigned:', window.firebaseStorage);
         }
     }
 }

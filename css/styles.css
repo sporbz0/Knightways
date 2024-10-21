@@ -97,6 +97,59 @@ body {
     --sidebar-width: 250px;
 }
 
+/* Light Theme as a Class */
+body.light-theme {
+    /* Re-define the same variables to apply the light theme */
+    --background-color: #f4f4f4;
+    --text-color: #333333;
+
+    --header-background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    --header-text-color: #ffffff;
+
+    --nav-background: #333333;
+    --nav-text-color: #ffffff;
+
+    --section-background: #f9f9f9;
+    --section-border-color: #dddddd;
+
+    --button-background: #007bff;
+    --button-text-color: #ffffff;
+    --button-hover-background: #0056b3;
+    --button-border-radius: 8px;
+
+    --input-background: #ffffff;
+    --input-border-color: #cccccc;
+    --input-border-radius: 6px;
+
+    --link-color: #007bff;
+    --link-hover-color: #0056b3;
+
+    --modal-background: rgba(0, 0, 0, 0.7);
+    --modal-content-background: var(--section-background);
+    --modal-border-color: var(--section-border-color);
+    --modal-border-radius: 8px;
+    --modal-text-color: var(--text-color);
+
+    --transition-duration: 0.3s;
+
+    --user-message-background: #e1ffc7;
+    --admin-message-background: #d1d1d1;
+    --user-message-color: #333333;
+    --admin-message-color: #333333;
+    --message-padding: 10px 15px;
+    --message-border-radius: 15px;
+    --message-max-width: 70%;
+    --message-font-size: 1em;
+    --send-button-background: #28a745;
+    --send-button-hover-background: #218838;
+    --chat-input-height: 50px;
+    --user-text-color: #000000;
+
+    --sidebar-background: var(--section-background);
+    --sidebar-border-color: var(--section-border-color);
+    --sidebar-width: 250px;
+}
+
 /* Dark Theme Variables */
 body.dark-theme {
     --background-color: #121212;
@@ -220,25 +273,273 @@ body.green-theme {
     --sidebar-border-color: #2e7d32;
 }
 
+/* Purple Theme Variables */
+body.purple-theme {
+    --background-color: #f3e5f5; /* Lavender */
+    --text-color: #4a148c; /* Deep Purple */
+    
+    /* Header Styles */
+    --header-background: linear-gradient(135deg, #7e57c2 0%, #512da8 100%);
+    --header-text-color: #ffffff;
+    
+    /* Navigation Styles */
+    --nav-background: #9575cd; /* Medium Purple */
+    --nav-text-color: #ffffff;
+    
+    /* Section Styles */
+    --section-background: #ede7f6; /* Light Purple */
+    --section-border-color: #b39ddb; /* Medium Light Purple */
+    
+    /* Button Styles */
+    --button-background: #7e57c2; /* Medium Purple */
+    --button-hover-background: #5e35b1; /* Darker Purple */
+    --button-text-color: #ffffff;
+    
+    /* Input Styles */
+    --input-background: #ffffff;
+    --input-border-color: #b39ddb;
+    --input-text-color: #4a148c;
+    
+    /* Link Styles */
+    --link-color: #512da8;
+    --link-hover-color: #311b92;
+    
+    /* Modal Styles */
+    --modal-background: rgba(0, 0, 0, 0.7);
+    --modal-content-background: #ede7f6;
+    --modal-text-color: #4a148c;
+    
+    /* Chat Specific Variables */
+    --user-message-background: #d1c4e9;
+    --admin-message-background: #b39ddb;
+    --user-message-color: #4a148c;
+    --admin-message-color: #4a148c;
+    --send-button-background: #8e24aa;
+    --send-button-hover-background: #6a1b9a;
+    --user-text-color: #000000;
+    
+    /* Sidebar Styles */
+    --sidebar-background: #b39ddb;
+    --sidebar-border-color: #7e57c2;
+}
+
+/* Solarized Theme Variables */
+body.solarized-theme {
+    --background-color: #fdf6e3; /* Base3 */
+    --text-color: #657b83; /* Base00 */
+    
+    /* Header Styles */
+    --header-background: linear-gradient(135deg, #b58900 0%, #cb4b16 100%); /* Yellow to Red */
+    --header-text-color: #fdf6e3;
+    
+    /* Navigation Styles */
+    --nav-background: #268bd2; /* Blue */
+    --nav-text-color: #fdf6e3;
+    
+    /* Section Styles */
+    --section-background: #eee8d5; /* Base2 */
+    --section-border-color: #93a1a1; /* Base1 */
+    
+    /* Button Styles */
+    --button-background: #268bd2; /* Blue */
+    --button-hover-background: #2aa198; /* Cyan */
+    --button-text-color: #fdf6e3;
+    
+    /* Input Styles */
+    --input-background: #fdf6e3;
+    --input-border-color: #93a1a1;
+    --input-text-color: #657b83;
+    
+    /* Link Styles */
+    --link-color: #2aa198;
+    --link-hover-color: #268bd2;
+    
+    /* Modal Styles */
+    --modal-content-background: #eee8d5;
+    --modal-text-color: #657b83;
+    
+    /* Chat Specific Variables */
+    --user-message-background: #93a1a1;
+    --admin-message-background: #2aa198;
+    --user-message-color: #fdf6e3;
+    --admin-message-color: #fdf6e3;
+    --send-button-background: #2aa198;
+    --send-button-hover-background: #268bd2;
+    --user-text-color: #000000;
+    
+    /* Sidebar Styles */
+    --sidebar-background: #2aa198;
+    --sidebar-border-color: #268bd2;
+}
+
+/* Minimalist Theme Variables */
+body.minimalist-theme {
+    --background-color: #fafafa;
+    --text-color: #212121;
+    
+    /* Header Styles */
+    --header-background: #ffffff;
+    --header-text-color: #212121;
+    
+    /* Navigation Styles */
+    --nav-background: #ffffff;
+    --nav-text-color: #212121;
+    
+    /* Section Styles */
+    --section-background: #ffffff;
+    --section-border-color: #e0e0e0;
+    
+    /* Button Styles */
+    --button-background: #757575;
+    --button-hover-background: #616161;
+    --button-text-color: #ffffff;
+    
+    /* Input Styles */
+    --input-background: #ffffff;
+    --input-border-color: #e0e0e0;
+    --input-text-color: #212121;
+    
+    /* Link Styles */
+    --link-color: #757575;
+    --link-hover-color: #616161;
+    
+    /* Modal Styles */
+    --modal-content-background: #ffffff;
+    --modal-text-color: #212121;
+    
+    /* Chat Specific Variables */
+    --user-message-background: #f5f5f5;
+    --admin-message-background: #e0e0e0;
+    --user-message-color: #212121;
+    --admin-message-color: #212121;
+    --send-button-background: #757575;
+    --send-button-hover-background: #616161;
+    --user-text-color: #000000;
+    
+    /* Sidebar Styles */
+    --sidebar-background: #ffffff;
+    --sidebar-border-color: #e0e0e0;
+}
+
+/* Neon Theme Variables */
+body.neon-theme {
+    --background-color: #1a1a1a;
+    --text-color: #39ff14; /* Neon Green */
+    
+    /* Header Styles */
+    --header-background: linear-gradient(135deg, #ff00ff 0%, #00ffff 100%); /* Magenta to Cyan */
+    --header-text-color: #ffffff;
+    
+    /* Navigation Styles */
+    --nav-background: #00ffff; /* Cyan */
+    --nav-text-color: #1a1a1a;
+    
+    /* Section Styles */
+    --section-background: #262626;
+    --section-border-color: #39ff14;
+    
+    /* Button Styles */
+    --button-background: #ff00ff; /* Magenta */
+    --button-hover-background: #e600e6;
+    --button-text-color: #1a1a1a;
+    
+    /* Input Styles */
+    --input-background: #333333;
+    --input-border-color: #39ff14;
+    --input-text-color: #39ff14;
+    
+    /* Link Styles */
+    --link-color: #39ff14; /* Neon Green */
+    --link-hover-color: #00ffff; /* Cyan */
+    
+    /* Modal Styles */
+    --modal-content-background: #262626;
+    --modal-text-color: #39ff14;
+    
+    /* Chat Specific Variables */
+    --user-message-background: #39ff14;
+    --admin-message-background: #ff00ff;
+    --user-message-color: #1a1a1a;
+    --admin-message-color: #1a1a1a;
+    --send-button-background: #39ff14;
+    --send-button-hover-background: #00e600;
+    --user-text-color: #000000;
+    
+    /* Sidebar Styles */
+    --sidebar-background: #262626;
+    --sidebar-border-color: #39ff14;
+}
+
+/* Monochrome Theme Variables */
+body.monochrome-theme {
+    --background-color: #ffffff;
+    --text-color: #000000;
+    
+    /* Header Styles */
+    --header-background: #000000;
+    --header-text-color: #ffffff;
+    
+    /* Navigation Styles */
+    --nav-background: #333333;
+    --nav-text-color: #ffffff;
+    
+    /* Section Styles */
+    --section-background: #f0f0f0;
+    --section-border-color: #cccccc;
+    
+    /* Button Styles */
+    --button-background: #000000;
+    --button-hover-background: #555555;
+    --button-text-color: #ffffff;
+    
+    /* Input Styles */
+    --input-background: #ffffff;
+    --input-border-color: #cccccc;
+    --input-text-color: #000000;
+    
+    /* Link Styles */
+    --link-color: #000000;
+    --link-hover-color: #555555;
+    
+    /* Modal Styles */
+    --modal-content-background: #ffffff;
+    --modal-text-color: #000000;
+    
+    /* Chat Specific Variables */
+    --user-message-background: #dddddd;
+    --admin-message-background: #bbbbbb;
+    --user-message-color: #000000;
+    --admin-message-color: #000000;
+    --send-button-background: #000000;
+    --send-button-hover-background: #555555;
+    --user-text-color: #000000;
+    
+    /* Sidebar Styles */
+    --sidebar-background: #f0f0f0;
+    --sidebar-border-color: #cccccc;
+}
+
+
 /* ============================
    3. Header Styles
    ============================ */
 
 header {
-    background: var(--header-background);
+    /*background: var(--header-background);*/
     color: var(--header-text-color);
     text-align: center;
     padding: 20px 0;
     margin: 0;
     font-size: 16px;
     font-weight: bold;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
     border-radius: 10px;
     transition: background var(--transition-duration) ease;
 }
 
 header h1 {
     margin: 0;
+    font-size: 32pt;
 }
 
 /* ============================
@@ -291,6 +592,7 @@ main.home-container,
 main.transloc-container,
 main.settings-container {
     flex-direction: column;
+    min-height: fit-content;
 }
 
 /* ============================
@@ -538,7 +840,7 @@ main.settings-container {
     flex: 1;
     gap: 20px; /* Space between sections */
     overflow: hidden; /* Prevent overflow */
-    padding: 20px; /* Optional padding */
+    /*padding: 20px;  Optional padding */
 }
 
 /* Map Section */
@@ -547,6 +849,7 @@ main.settings-container {
     flex-direction: column;
     flex: 1; /* Allow the map-section to grow and fill available space */
     gap: 10px; /* Space between elements */
+    min-height: 94vh;
 }
 
 .hero-section {
@@ -720,46 +1023,54 @@ main.settings-container {
    13. Modal Styles for Creating Channels
    ============================ */
 
-/* Modal Overlay */
+/* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
-    position: fixed;
-    z-index: 2000; /* On top of other elements */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: var(--modal-background);
+    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+    
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Stack caption above image */
+    padding: 20px; /* Optional: Add padding to prevent content from touching edges */
 }
 
-/* Modal Content */
+/* Modal Content (Image) */
 .modal-content {
-    background-color: var(--modal-content-background);
-    margin: 10% auto;
-    padding: 20px;
-    border: 1px solid var(--modal-border-color);
-    width: 90%;
-    max-width: 400px;
-    border-radius: var(--modal-border-radius);
-    color: var(--modal-text-color);
-    transition: background-color var(--transition-duration) ease, border-color var(--transition-duration) ease, color var(--transition-duration) ease;
+    max-width: 90%;
+    max-height: 80%; /* Adjusted to leave space for the caption */
+    margin: 10px 0; /* Add margin between caption and image */
+    display: block;
+    border: 5px solid white;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    outline: none; /* Remove default outline */
+    animation-name: zoom;
+    animation-duration: 0.6s;
 }
-
-/* Close Button */
+/* The Close Button */
 .close {
-    color: var(--modal-text-color);
-    float: right;
-    font-size: 28px;
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
     font-weight: bold;
+    transition: 0.3s;
     cursor: pointer;
-    transition: color var(--transition-duration) ease;
 }
 
 .close:hover,
 .close:focus {
-    color: var(--send-button-hover-background);
+    color: #bbb;
     text-decoration: none;
+    cursor: pointer;
 }
 
 /* New Image Modal Overlay for maps*/
@@ -799,6 +1110,44 @@ main.settings-container {
     cursor: pointer;
 }
 
+/* Caption of Modal Image */
+#caption {
+    text-align: center;
+    color: #ccc;
+    font-size: 20px;
+}
+
+/* Search Box */
+.controls {
+    margin: 20px auto;
+    display: block;
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Add Zoom Animation */
+@keyframes zoom {
+    from {transform: scale(0.7)}
+    to {transform: scale(1)}
+}
+
+/* Spinner Styles (Optional) */
+.spinner {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #4d90fe; /* Blue */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    z-index: 1001; /* Above the modal content */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 
 /* ============================
    14. Bottom Navigation Bar Styles
@@ -1457,8 +1806,22 @@ body, header, nav, .settings-section, button, input, select, textarea, .chat-mes
 }
 
 #user-info {
-    text-align: center;
-    margin-top: 10px;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the start (left) */
+    gap: 5px; /* Space between welcome text and sign-out button */
+    padding: 10px;
+    background-color: var(--section-background);
+    border: 1px solid var(--section-border-color);
+    border-radius: 8px;
+    transition: background-color var(--transition-duration) ease, border-color var(--transition-duration) ease;
+}
+
+/* Welcome Text */
+#user-email {
+    font-weight: bold;
+    color: var(--text-color);
+    font-size: 1em;
 }
 
 .chat-username {
@@ -1576,25 +1939,102 @@ body, header, nav, .settings-section, button, input, select, textarea, .chat-mes
 
 
 
+/* Sign Out Button */
 #auth-signout {
-    background-color: rgba(219, 11, 11, 0.781); /* Match the primary button theme */
-    color: rgb(255, 255, 255);
-    padding: 10px 20px;
+    padding: 8px 12px;
+    background-color: red;
+    color: var(--button-text-color);
     border: none;
-    border-radius: 5px;
+    border-radius: var(--button-border-radius);
     cursor: pointer;
+    transition: background-color var(--transition-duration) ease;
+    font-size: 0.9em;
 }
 
 #auth-signout:hover {
-    background-color: var(--primary-button-hover-bg); /* Hover color */
+    background-color: var(--button-hover-background);
 }
 
-/* Wrapper Styles */
+/* -------------- Wrapper Styles -------------- */
 .wrapper {
     display: flex;
     flex-direction: column;
-    height: 100vh; /* Full viewport height */
-    width: 100vw;  /* Full viewport width */
+    height: 100vh;  /* Full viewport height */
+    width: 100vw;   /* Full viewport width */
     padding: 10px;
     overflow-y: auto;
+    box-sizing: border-box;
 }
+
+/* -------------- Header Wrapper Styles -------------- */
+.header-wrapper {
+    position: relative;                   /* Establishes a containing block for absolute positioning */
+    display: flex;
+    justify-content: flex-end;            /* Align items to the right */
+    align-items: center;                  /* Vertically center items */
+    padding: 10px 20px;                   /* Padding for the wrapper */
+    background: var(--header-background); /* Theme background color */
+    color: var(--header-text-color);      /* Theme text color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    border-radius: 8px;                   /* Smooth rounded corners */
+    box-sizing: border-box;               /* Include padding in width */
+}
+
+/* -------------- Main Header Styles -------------- */
+.main-header {
+    position: absolute;                   /* Remove from normal flow */
+    left: 50%;                            /* Position at 50% horizontally */
+    transform: translateX(-50%);          /* Center it by shifting left by 50% of its own width */
+    text-align: center;                   /* Center text */
+    font-size: 24px;                      /* Example font size */
+    font-weight: bold;                    /* Example font weight */
+    white-space: nowrap;                  /* Prevent text from wrapping */
+}
+
+/* -------------- Header Right Styles -------------- */
+.header-right {
+    background: var(--section-background); /* Theme section background color */
+    border: 1px solid var(--section-border-color); /* Theme border color */
+    padding: 10px;                        /* Padding inside the sign-in box */
+    border-radius: 8px;                   /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    width: 250px;                         /* Fixed width for the sign-in box */
+    display: flex;
+    flex-direction: column;               /* Stack sign-in elements vertically */
+    justify-content: space-between;       /* Space between elements */
+    align-items: stretch;                 /* Stretch elements to fill the container */
+    box-sizing: border-box;               /* Include padding in width */
+}
+
+/* -------------- Input and Button Styles -------------- */
+.header-right input,
+.header-right button {
+    width: 100%;                          /* Full width elements */
+    padding: 8px;                         /* Padding inside inputs and button */
+    margin-bottom: 8px;                   /* Space between elements */
+    font-size: 14px;                      /* Increased font size for readability */
+    border-radius: var(--input-border-radius); /* Rounded corners */
+    border: 1px solid var(--input-border-color); /* Border color */
+    background-color: var(--input-background);  /* Input background color */
+    color: var(--text-color);             /* Text color */
+    box-sizing: border-box;               /* Ensure padding is included in width */
+}
+
+/* Remove bottom margin for the last input/button */
+.header-right input:last-child,
+.header-right button:last-child {
+    margin-bottom: 0;
+}
+
+/* -------------- Button Specific Styles -------------- */
+.header-right button {
+    background-color: var(--button-background); /* Button background */
+    color: var(--button-text-color);            /* Button text color */
+    cursor: pointer;
+    transition: background-color var(--transition-duration); /* Smooth transition */
+}
+
+.header-right button:hover {
+    background-color: var(--button-hover-background); /* Hover background */
+}
+

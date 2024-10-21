@@ -4,80 +4,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knightways - Settings</title>
+    <title>Settings | Knightways</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
+    <!-- Wrapper for the main content including header, right-side, and main content -->
     <div class="wrapper">
+        <!-- Wrapper for Header and Right Section -->
+        <div class="header-wrapper">
+            <!-- Main Header Section -->
+            <header class="main-header">
+                <div class="header-content">
+                    <div class="header-center">
+                        <h1>Knightways</h1>
+                        <div class="hero-text">
+                            <h2>Settings</h2>
+                            <p>Manage your account preferences and personalize your Knightways experience.</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
 
-    <header>
-        <h1>Settings</h1>
-    </header>
+            <!-- Sign-in Section (Header Right) -->
+            <div class="header-right">
+                <!-- Authentication Form -->
+                <div id="auth-form">
+                    <input type="email" id="auth-email" placeholder="Email" required />
+                    <input type="password" id="auth-password" placeholder="Password" required />
 
-    <main class="settings-container">
-        <!-- Change Username -->
-        <section class="settings-section">
-            <h2>Change Username</h2>
-            <form id="usernameForm">
-                <label for="newUsername">New Username:</label>
-                <input type="text" id="newUsername" placeholder="Enter new username" required>
-                <button type="submit">Update Username</button>
-            </form>
-        </section>
+                    <!-- Loading Spinner -->
+                    <div id="auth-loading" class="loading-spinner" style="display: none;" role="status" aria-live="polite">
+                        <span class="sr-only">Loading...</span>
+                    </div>
 
-        <!-- Change Password -->
-        <section class="settings-section">
-            <h2>Change Password</h2>
-            <form id="passwordForm">
-                <label for="currentPassword">Current Password:</label>
-                <input type="password" id="currentPassword" placeholder="Enter current password" required>
+                    <div id="auth-error" class="error-message" style="display: none;"></div>
+                    <button id="auth-signin">Sign In</button>
+                    <button id="auth-signup">Sign Up</button>
+                </div>
 
-                <label for="newPassword">New Password:</label>
-                <input type="password" id="newPassword" placeholder="Enter new password" required>
-
-                <button type="submit">Update Password</button>
-            </form>
-        </section>
-
-        <!-- Update Profile Image -->
-        <section class="settings-section">
-            <h2>Update Profile Image</h2>
-            <form id="profileImageForm">
-                <label for="profileImage">Select Image:</label>
-                <input type="file" id="profileImage" accept="image/*" required>
-                <button type="submit">Upload Image</button>
-            </form>
-            <div id="currentProfileImage">
-                <!-- Current profile image will be displayed here -->
+                <!-- User Information Display (Initially Hidden) -->
+                <div id="user-info" style="display: none;">
+                    <span id="user-email">Welcome, Guest</span>
+                    <button id="auth-signout">Sign Out</button>
+                </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Theme Selector -->
-        <section class="settings-section">
-            <h2>Select Theme</h2>
-            <form>
-                <label for="theme-selector">Choose a theme:</label>
-                <select id="theme-selector">
-                    <option value="light-theme">Light</option>
-                    <option value="dark-theme">Dark</option>
-                    <option value="blue-theme">Blue</option>
-                    <option value="green-theme">Green</option>
-                </select>
-                <button type="button" id="reset-theme-btn">Reset to Default Theme</button>
-            </form>
-        </section>
-    </main>
+        <!-- Main Content -->
+        <main class="settings-container">
+            <!-- Change Username -->
+            <section class="settings-section">
+                <h2>Change Username</h2>
+                <form id="usernameForm">
+                    <label for="newUsername">New Username:</label>
+                    <input type="text" id="newUsername" placeholder="Enter new username" required>
+                    <button type="submit">Update Username</button>
+                </form>
+            </section>
 
-</div>
+            <!-- Change Password -->
+            <section class="settings-section">
+                <h2>Change Password</h2>
+                <form id="passwordForm">
+                    <label for="currentPassword">Current Password:</label>
+                    <input type="password" id="currentPassword" placeholder="Enter current password" required>
 
-    <!-- Bottom navigation bar -->
-    <div class="bottom-nav">
+                    <label for="newPassword">New Password:</label>
+                    <input type="password" id="newPassword" placeholder="Enter new password" required>
+
+                    <button type="submit">Update Password</button>
+                </form>
+            </section>
+
+            <!-- Update Profile Image -->
+            <section class="settings-section">
+                <h2>Update Profile Image</h2>
+                <form id="profileImageForm">
+                    <label for="profileImage">Select Image:</label>
+                    <input type="file" id="profileImage" accept="image/*" required>
+                    <button type="submit">Upload Image</button>
+                </form>
+                <div id="currentProfileImage">
+                    <!-- Current profile image will be displayed here -->
+                </div>
+            </section>
+
+            <!-- Theme Selector -->
+            <section class="settings-section">
+                <h2>Select Theme</h2>
+                <form>
+                    <label for="theme-selector">Choose a theme:</label>
+                    <select id="theme-selector">
+                        <option value="light-theme">Light</option>
+                        <option value="dark-theme">Dark</option>
+                        <option value="blue-theme">Blue</option>
+                        <option value="green-theme">Green</option>
+                    </select>
+                    <button type="button" id="reset-theme-btn">Reset to Default Theme</button>
+                </form>
+            </section>
+        </main>
+    </div> <!-- End of Wrapper -->
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="bottom-nav">
         <a href="index.html" class="nav-item">Home</a>
         <a href="chat.html" class="nav-item">Chat</a>
         <a href="transloc.html" class="nav-item">Transloc</a>
         <a href="tips.html" class="nav-item">Tips</a>
-        <a href="settings.html" class="nav-item">Settings</a>
+        <a href="settings.html" class="nav-item active">Settings</a>
+    </nav>
+
+    <!-- Modal Structure (If Applicable) -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage" alt="Expanded View">
+        <div id="caption"></div>
     </div>
 
     <!-- Firebase SDKs (Compat) -->
@@ -92,7 +135,10 @@
     <!-- Theme Management Script -->
     <script src="js/theme.js"></script>
 
-    <!-- Your Custom JS -->
+    <!-- Auth Script -->
+    <script src="js/auth.js"></script>
+
+    <!-- Your Custom JS for Settings Functionality -->
     <script src="js/settings.js"></script>
 
 </body>

@@ -1,5 +1,7 @@
 // js/map.js
 
+"use strict";
+
 let map;
 
 function initMap() {
@@ -75,7 +77,7 @@ function initMap() {
 
 // Function to add a clickable marker for buildings with floor plans and a custom icon
 function addBuildingMarker(map, position, buildingName, floorPlanUrl, customIcon) {
-    var marker = new google.maps.Marker({
+    const marker = new google.maps.Marker({
         position: position,
         map: map,
         title: buildingName,
@@ -96,31 +98,72 @@ function addBuildingMarker(map, position, buildingName, floorPlanUrl, customIcon
 
 // Function to open the modal and display the floor plan
 function openModal(imageUrl, captionText) {
-    var modal = document.getElementById("imageModal");
-    var modalImg = document.getElementById("modalImage");
-    var caption = document.getElementById("caption");
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const caption = document.getElementById("caption");
 
-    modal.style.display = "block";  // Show the modal
-    modalImg.src = imageUrl;        // Set the image source
-    caption.innerHTML = captionText; // Set the caption text
+    if (modal && modalImg && caption) { // Check if elements exist
+        modal.style.display = "flex";  // Show the modal using flex
+        caption.innerHTML = captionText; // Set the caption text
+
+        // Show loading spinner (if implemented)
+        const spinner = document.createElement('div');
+        spinner.classList.add('spinner');
+        modal.appendChild(spinner);
+
+        // Load the image
+        modalImg.src = imageUrl;
+        modalImg.onload = () => {
+            spinner.remove(); // Remove spinner once image is loaded
+            modalImg.focus(); // Shift focus to the image for accessibility
+        };
+        modalImg.onerror = () => {
+            spinner.remove(); // Remove spinner
+            alert("Failed to load the floor plan image.");
+        };
+
+        // Prevent background scrolling
+        document.body.style.overflow = "hidden";
+    } else {
+        console.warn("Modal elements not found in the DOM.");
+    }
+}
+
+// Function to close the modal and re-enable background scrolling
+function closeModal() {
+    const modal = document.getElementById("imageModal");
+    if (modal) {
+        modal.style.display = "none";
+        // Re-enable background scrolling
+        document.body.style.overflow = "auto";
+    }
 }
 
 // Ensure DOM is loaded before attaching event listeners
 document.addEventListener('DOMContentLoaded', function() {
-    var modal = document.getElementById("imageModal");
-    var closeBtn = document.getElementById("closeModal");
+    const modal = document.getElementById("imageModal");
+    const closeBtn = document.querySelector(".close"); // Corrected selector to class
 
-    // Close the modal when the user clicks on the close button (x)
-    closeBtn.onclick = function() {
-        modal.style.display = "none";
-    };
+    if (closeBtn && modal) { // Check if elements exist
+        // Close the modal when the user clicks on the close button (x)
+        closeBtn.onclick = function() {
+            closeModal();
+        };
+    } else {
+        console.warn('Close button or modal not found.');
+    }
 
     // Close the modal if the user clicks anywhere outside the image
     window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+        if (event.target === modal) {
+            closeModal();
         }
     };
+
+    // Close the modal when the user presses the Escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === "Escape" && modal.style.display === "flex") {
+            closeModal();
+        }
+    });
 });
-
-

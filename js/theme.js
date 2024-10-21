@@ -1,24 +1,35 @@
 // js/theme.js
 
-// Check if Firebase is initialized and Firebase services are available
-auth = window.firebaseAuth;
-db = window.firebaseDB;
+// Ensure Firebase is initialized and services are available
+const auth = window.firebaseAuth;
+const db = window.firebaseDB;
 
+// Define all available themes in a central array
+const allThemes = [
+    'light-theme',
+    'dark-theme',
+    'blue-theme',
+    'green-theme',
+    'purple-theme',
+    'solarized-theme',
+    'minimalist-theme',
+    'neon-theme',
+    'monochrome-theme'
+];
 
 // Function to apply a theme by adding the corresponding class to <body>
 function applyTheme(theme) {
     const body = document.body;
 
-    // Remove existing theme classes
-    body.classList.remove('dark-theme', 'blue-theme', 'green-theme');
+    // Remove all existing theme classes
+    body.classList.remove(...allThemes);
 
     // Add the selected theme class if it's a valid theme
-    const validThemes = ['dark-theme', 'blue-theme', 'green-theme'];
-    if (validThemes.includes(theme)) {
+    if (allThemes.includes(theme)) {
         body.classList.add(theme);
     } else {
-        // Default to light theme if invalid theme is provided or no theme
-        body.classList.remove(...validThemes);
+        // Default to 'light-theme' if invalid theme is provided or no theme
+        body.classList.add('light-theme');
     }
 }
 
@@ -39,7 +50,7 @@ async function loadUserTheme(db, user) {
 
     try {
         const userDoc = await db.collection('users').doc(user.uid).get();
-        if (userDoc.exists && userDoc.data().theme) {
+        if (userDoc.exists && userDoc.data().theme && allThemes.includes(userDoc.data().theme)) {
             const userTheme = userDoc.data().theme;
             applyTheme(userTheme);
         } else {
@@ -58,26 +69,47 @@ async function loadUserTheme(db, user) {
 async function saveUserTheme(db, user, theme) {
     if (user) {
         try {
-            await db.collection('users').doc(user.uid).update({
-                theme: theme
-            });
-            console.log('Theme saved to Firestore.');
+            // Ensure the theme is valid before saving
+            if (allThemes.includes(theme)) {
+                await db.collection('users').doc(user.uid).update({
+                    theme: theme
+                });
+                console.log('Theme saved to Firestore.');
+            } else {
+                console.warn(`Attempted to save invalid theme: ${theme}`);
+            }
         } catch (error) {
             console.error('Error saving theme to Firestore:', error);
         }
     } else {
-        // If no user is logged in, save to localStorage
-        localStorage.setItem('selectedTheme', theme);
-        console.log('Theme saved to localStorage.');
+        // If no user is logged in, save to localStorage if valid
+        if (allThemes.includes(theme)) {
+            localStorage.setItem('selectedTheme', theme);
+            console.log('Theme saved to localStorage.');
+        } else {
+            console.warn(`Attempted to save invalid theme to localStorage: ${theme}`);
+        }
     }
+}
+
+// Function to populate the theme selector dropdown dynamically (Optional)
+function populateThemeSelector(themeSelector) {
+    // Clear existing options
+    themeSelector.innerHTML = '';
+
+    // Create and append an option for each theme
+    allThemes.forEach((theme) => {
+        // Capitalize the first letter and replace hyphens with spaces for display
+        const displayName = theme.replace('-', ' ').replace(/\b\w/g, char => char.toUpperCase());
+        const option = document.createElement('option');
+        option.value = theme;
+        option.textContent = displayName;
+        themeSelector.appendChild(option);
+    });
 }
 
 // Event listener for DOMContentLoaded to apply the theme on page load
 document.addEventListener('DOMContentLoaded', () => {
-    // Get Firebase services
-    const auth = window.firebaseAuth;
-    const db = window.firebaseDB;
-
     // Listen to authentication state changes
     auth.onAuthStateChanged(async (user) => {
         // Load and apply the user's theme
@@ -86,11 +118,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // If the current page has a theme selector, set up its event listener
         const themeSelector = document.getElementById('theme-selector');
         if (themeSelector) {
-            // Set the selector's value to the current theme
+            // Optionally populate the theme selector dynamically
+            populateThemeSelector(themeSelector);
+
+            // Determine the current theme
             let currentTheme = 'light-theme'; // default
             if (user) {
                 const userDoc = await db.collection('users').doc(user.uid).get();
-                if (userDoc.exists && userDoc.data().theme) {
+                if (userDoc.exists && userDoc.data().theme && allThemes.includes(userDoc.data().theme)) {
                     currentTheme = userDoc.data().theme;
                 }
             } else {
